@@ -12,6 +12,9 @@ public class Buyer {
 	private String email;
 	private String password;
 
+	public Buyer() {
+	}
+
 	public int getId() {
 		return id;
 	}
