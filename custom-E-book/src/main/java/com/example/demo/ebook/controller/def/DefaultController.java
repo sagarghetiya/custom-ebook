@@ -15,4 +15,9 @@ public class DefaultController {
 	public String regBuyer() {
 		return "regBuyer";
 	}
+	
+	@RequestMapping("regPublisher")
+	public String regPublisher() {
+		return "regPublisher";
+	}
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello
+<a href="/regBuyer">register Buyer</a> <br/>
+<a href="/regPublisher">register Publisher</a> <br/>
 </body>
 </html>

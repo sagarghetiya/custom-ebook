@@ -1,4 +1,4 @@
-package com.example.demo.ebook.controller.buyer;
+package com.example.demo.ebook.controller.publisher;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.ebook.model.buyer.Buyer;
-import com.example.demo.ebook.service.buyer.BuyerService;
+import com.example.demo.ebook.model.publisher.Publisher;
+import com.example.demo.ebook.service.publisher.PublisherService;
 
 @Controller
-public class BuyerController {
+public class PublisherController {
 	
 	@Autowired
-	BuyerService service;
+	PublisherService service;
 	
-	@RequestMapping(value = "/registerBuyer", method = RequestMethod.POST)
-	public String registerBuyer(@ModelAttribute("buyer") Buyer buyer, ModelMap map) {
-		int result = service.registerBuyer(buyer);
+	@RequestMapping(value = "/registerPublisher", method = RequestMethod.POST)
+	public String registerPublisher(@ModelAttribute("buyer") Publisher publisher, ModelMap map) {
+		int result = service.registerPublisher(publisher);
 		map.addAttribute("result", "user created with id "+result);
 		return "successRegistration";
 	}
