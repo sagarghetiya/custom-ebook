@@ -1,5 +1,8 @@
 package com.example.demo.ebook.controller.publisher;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,9 +27,25 @@ public class PublisherController {
 		return "successRegistration";
 	}
 	
-	@RequestMapping(value = "/publisherLogin", method = RequestMethod.POST)
-	public String publisherLogin(@RequestParam("loginId") String loginId, @RequestParam("password")String Password) {
-		
-		return "";
+	@RequestMapping(value = "/validatePublisherLogin", method = RequestMethod.POST)
+	public String publisherLogin(@RequestParam("loginId") String loginId, @RequestParam("password")String password, ModelMap map, HttpServletRequest request) {
+		if(request.getSession(false).getAttribute("id")!=null) {
+			return "redirect:pubHome";
+		}
+		Publisher publisher = service.validatePublisher(loginId,password);
+		if(publisher==null) {
+			map.addAttribute("error", "username or password invalid");
+			return "publisherLogin";
+		}
+		else {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id", publisher.getId());
+			return "redirect:pubHome";
+		}
+	}
+	@RequestMapping("/logoutPublisher")
+	public String logoutPublisher(HttpSession session) {
+		session.invalidate();
+		return "redirect:loginPub";
 	}
 }

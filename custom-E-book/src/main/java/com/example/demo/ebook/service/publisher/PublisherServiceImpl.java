@@ -26,7 +26,7 @@ public class PublisherServiceImpl implements PublisherService {
 		else {
 			
 			Publisher publisher = publishers.get(0);
-			if(publisher.getPassword()==password) {
+			if(publisher.getPassword().equals(password)) {
 				return publisher;
 			}
 			else {
