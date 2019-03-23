@@ -1,5 +1,7 @@
 package com.example.demo.ebook.service.publisher;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,24 @@ public class PublisherServiceImpl implements PublisherService {
 	public int registerPublisher(Publisher publisher) {
 		Publisher save = repository.save(publisher);
 		return save.getId();
+	}
+	@Override
+	public Publisher validatePublisher(String loginId, String password) {
+		List<Publisher> publishers = repository.findByLoginId(loginId);
+		if(publishers.size()==0) {
+			return null;
+		}
+		else {
+			
+			Publisher publisher = publishers.get(0);
+			if(publisher.getPassword()==password) {
+				return publisher;
+			}
+			else {
+				return null;
+			}
+		}
+		
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ebook.model.publisher.Publisher;
 import com.example.demo.ebook.service.publisher.PublisherService;
@@ -21,5 +22,11 @@ public class PublisherController {
 		int result = service.registerPublisher(publisher);
 		map.addAttribute("result", "user created with id "+result);
 		return "successRegistration";
+	}
+	
+	@RequestMapping(value = "/publisherLogin", method = RequestMethod.POST)
+	public String publisherLogin(@RequestParam("loginId") String loginId, @RequestParam("password")String Password) {
+		
+		return "";
 	}
 }

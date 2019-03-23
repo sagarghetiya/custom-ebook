@@ -19,7 +19,7 @@ public class CustomEBookApplicationTests {
 
 	@Autowired
 	ApplicationContext context;
-	//@Test
+	@Test
 	public void saveBuyer() {
 		BuyerRepository repository = context.getBean(BuyerRepository.class);
 		BuyerService service = context.getBean(BuyerService.class);
