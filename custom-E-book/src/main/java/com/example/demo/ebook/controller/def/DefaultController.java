@@ -44,5 +44,24 @@ public class DefaultController {
 		}
 	}
 	
+	@RequestMapping("loginBuy")
+	public String LoginBuyer(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")!=null) {
+			return "redirect:buyHome";
+		}
+		map.addAttribute("error","");
+		return "buyerLogin";
+	}
+	
+	@RequestMapping("buyHome")
+	public String buyerHome(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")==null) {
+			return "redirect:loginBuy";
+		}
+		else {
+			return "buyerHome";
+		}
+	}
+	
 	
 }
