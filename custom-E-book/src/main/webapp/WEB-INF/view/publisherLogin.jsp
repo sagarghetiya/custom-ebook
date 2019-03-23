@@ -10,8 +10,8 @@
 	<%=request.getAttribute("error") %>
 	<form action="validatePublisherLogin" method="post">
 		<pre>
-			login ID : <input type="text" name="loginId" />
-			password : <input type="password" name="password">
+			<label>login ID :</label> <input type="text" name="loginId" />
+			<label>password :</label> <input type="password" name="password">
 			<input type="submit" name="Login">
 		</pre>
 	</form>
