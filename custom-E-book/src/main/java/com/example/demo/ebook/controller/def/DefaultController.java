@@ -20,4 +20,8 @@ public class DefaultController {
 	public String regPublisher() {
 		return "regPublisher";
 	}
+	@RequestMapping("regBuyerPublisher")
+	public String regBuyerPublisher() {
+		return "Register";
+	}
 }
