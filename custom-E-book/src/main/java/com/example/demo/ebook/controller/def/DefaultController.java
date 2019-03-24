@@ -1,6 +1,10 @@
 package com.example.demo.ebook.controller.def;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,8 +24,51 @@ public class DefaultController {
 	public String regPublisher() {
 		return "regPublisher";
 	}
+<<<<<<< HEAD
 	@RequestMapping("regBuyerPublisher")
 	public String regBuyerPublisher() {
 		return "Register";
 	}
+=======
+	
+	@RequestMapping("loginPub")
+	public String LoginPublisher(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")!=null) {
+			return "redirect:pubHome";
+		}
+		map.addAttribute("error","");
+		return "publisherLogin";
+	}
+	
+	@RequestMapping("pubHome")
+	public String publisherHome(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")==null) {
+			return "redirect:loginPub";
+		}
+		else {
+			return "publisherHome";
+		}
+	}
+	
+	@RequestMapping("loginBuy")
+	public String LoginBuyer(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")!=null) {
+			return "redirect:buyHome";
+		}
+		map.addAttribute("error","");
+		return "buyerLogin";
+	}
+	
+	@RequestMapping("buyHome")
+	public String buyerHome(ModelMap map, HttpSession session) {
+		if(session.getAttribute("id")==null) {
+			return "redirect:loginBuy";
+		}
+		else {
+			return "buyerHome";
+		}
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/64jain/custom-ebook.git
 }
