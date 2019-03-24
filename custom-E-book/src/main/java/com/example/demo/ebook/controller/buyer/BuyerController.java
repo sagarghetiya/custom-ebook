@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ebook.model.buyer.Buyer;
-import com.example.demo.ebook.model.publisher.Publisher;
 import com.example.demo.ebook.service.buyer.BuyerService;
 
 @Controller

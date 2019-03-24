@@ -23,7 +23,7 @@ public class BookController {
 	@RequestMapping(value = "/registerBook", method = RequestMethod.POST)
 	public String registerPublisher(@ModelAttribute("book") Book book, ModelMap map,HttpServletRequest request) {
 		
-		Publisher publisher=null;
+		Publisher publisher=(Publisher) request.getSession(false).getAttribute("publisher");
 		int result = bookservice.registerBook(book,publisher);
 		map.addAttribute("result", "user created with id "+result);
 		return "successRegistration";

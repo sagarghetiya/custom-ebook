@@ -14,5 +14,6 @@
 	<br/>
 	<br>
 	<a href="logoutPublisher">logout</a>
+	<a href="regBook">registerBook</a>
 </body>
 </html>

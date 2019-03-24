@@ -66,6 +66,15 @@ public class DefaultController {
 			return "buyerHome";
 		}
 	}
+	@RequestMapping("regBook")
+	public String regBook(ModelMap map, HttpSession session) {
+		if(session.getAttribute("publisher")==null) {
+			return "redirect:pubHome";
+		}
+		else {
+			return "regBook";
+		}
+		}
 	
 	
 //>>>>>>> branch 'master' of https://github.com/64jain/custom-ebook.git
