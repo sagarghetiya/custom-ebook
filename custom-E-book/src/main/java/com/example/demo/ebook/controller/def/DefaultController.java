@@ -24,6 +24,10 @@ public class DefaultController {
 	public String regPublisher() {
 		return "regPublisher";
 	}
+	@RequestMapping("regBuyerPublisher")
+	public String regBuyerPublisher() {
+		return "Register";
+	}
 	
 	@RequestMapping("loginPub")
 	public String LoginPublisher(ModelMap map, HttpSession session) {
@@ -64,4 +68,5 @@ public class DefaultController {
 	}
 	
 	
+//>>>>>>> branch 'master' of https://github.com/64jain/custom-ebook.git
 }
