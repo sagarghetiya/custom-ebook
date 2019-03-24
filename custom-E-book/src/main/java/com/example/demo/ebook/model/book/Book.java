@@ -2,7 +2,7 @@ package com.example.demo.ebook.model.book;
 
 import javax.persistence.*;
 
-import com.example.demo.ebook.model.buyer.Buyer; 
+import com.example.demo.ebook.model.publisher.Publisher; 
 
 @Entity
 public class Book {
@@ -13,7 +13,7 @@ public class Book {
 	private String isbn;
 	private String bookName;
 	@ManyToOne
-	private Buyer buyer;
+	private Publisher publisher;
 	private int noOfChapters;
 	private int totalNoOfPages;
 	private double price;
@@ -47,12 +47,12 @@ public class Book {
 		this.bookName = bookName;
 	}
 
-	public Buyer getBuyer() {
-		return buyer;
+	public Publisher getPublisher() {
+		return publisher;
 	}
 
-	public void setBuyer(Buyer buyer) {
-		this.buyer = buyer;
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	public int getNoOfChapters() {
