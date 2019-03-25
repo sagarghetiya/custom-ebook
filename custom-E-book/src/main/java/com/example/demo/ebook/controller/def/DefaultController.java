@@ -32,7 +32,12 @@ public class DefaultController {
 	@RequestMapping("loginBuyerPublisher")
 	public String loginBuyerPublisher(ModelMap map, HttpSession session) {
 		if (session.getAttribute("id") != null) {
-			return "redirect:pubHome";
+			if(session.getAttribute("publisher")!=null) {
+				return "redirect:pubHome";
+			}
+			else if (session.getAttribute("buyer")!=null) {
+				return "redirect:buyHome";
+			}
 		}
 		map.addAttribute("error", "");
 		return "Login";

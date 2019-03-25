@@ -40,6 +40,7 @@ public class BuyerController {
 		else {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", buyer.getId());
+			session.setAttribute("buyer", buyer);
 			return "redirect:buyHome";
 		}
 	}
