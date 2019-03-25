@@ -44,7 +44,7 @@ public class DefaultController {
 //			return "redirect:pubHome";
 //		}
 //		map.addAttribute("error","");
-//		return "publisherLogin";
+//		return "Login";
 //	}
 
 	@RequestMapping("pubHome")
