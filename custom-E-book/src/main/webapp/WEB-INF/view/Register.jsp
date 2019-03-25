@@ -65,14 +65,23 @@ body {
   padding: 10px;
 }
 
-/* Left and right column */
-.column.side {
+/* Left column */
+.column.side.left {
+  width: 29%;
+  margin-left:2%;
+  margin-right:0.2% 
+}
+
+/*  right column */
+.column.side.right {
   width: 27%;
+   margin-left:0.2%;
+	margin-right:2%
 }
 
 /* Middle column */
 .column.middle {
-  width: 46%;
+  width:38%;
 }
 
 /* Clear floats after the columns */
@@ -92,30 +101,31 @@ body {
     </style>
 </head>
 <body>
+
+<div class="topnav">
+  <a href="/">Home</a>
+ <a href="/loginBuyerPublisher">Login</a>
+</div>
 <div class="header">
 <div id="headerimg"  style="background-image:url(/images/reg2.jpg);height:235px; background-repeat:no-repeat;object-fit:cover;padding-top:-16px;margin-top:-16px;padding-bottom:-16px;margin-bottom:-16px;padding-left:-16px;margin-left:-16px;padding-right:-16px;margin-right:-16px;">
  </div>
   
 </div>
 
-<div class="topnav">
-  <a href="/">Home</a>
- <a href="/loginBuyerPublisher">Login</a>
-</div>
 
 <div class="row">
-  <div class="column side">
+  <div class="column side left">
     <h2>Register as Buyer</h2>
     <p>Make your own Customized Ebook with plenty of available collections  </p>
      <button type="button" class="btn btn-info" id="myBtn1">Register Buyer</button>
   </div>
   
   <div class="column middle">
-  <div id="image"  style="background-image:url(/images/ebook1.jpg);height:500px;">
+  <div id="image"  style="background-image:url(/images/ebook1.jpg);height:450px;">
   </div>
   </div>
   
-  <div class="column side">
+  <div class="column side right">
     <h2>Register as Publisher</h2>
     <p>Publish your own book and sell them chapterwise as well</p>
   <button type="button" class="btn btn-info" id="myBtn2">Register Publisher</button>

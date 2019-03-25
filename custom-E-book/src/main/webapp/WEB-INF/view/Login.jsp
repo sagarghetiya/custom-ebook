@@ -90,13 +90,14 @@ body {
     </style>
 </head>
 <body>
-<div class="header">
-<div id="headerimg"  style="background-image:url(/images/login1.jpg);height:290px; background-repeat:no-repeat;object-fit:cover;padding-top:-16px;margin-top:-16px;padding-bottom:-16px;margin-bottom:-16px;padding-left:-16px;margin-left:-16px;padding-right:-16px;margin-right:-16px;">
- </div>
  <div class="topnav">
   <a href="/">Home</a>
     <a href="/regBuyerPublisher">Register</a>
 </div>
+
+<div class="header">
+<div id="headerimg"  style="background-image:url(/images/login1.jpg);height:290px; background-repeat:no-repeat;object-fit:cover;padding-top:-16px;margin-top:-16px;padding-bottom:-16px;margin-bottom:-16px;padding-left:-16px;margin-left:-16px;padding-right:-16px;margin-right:-16px;">
+ </div>
 
 <div class="row">
   <div class="column side">

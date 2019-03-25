@@ -28,8 +28,8 @@
       <li class="active"><a href="/">Home</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/regBuyerPublisher"><span class="glyphicon glyphicon-user"></span>Register as Buyer/publisher</a></li>
-       <li><a href="/loginBuyerPublisher"><span class="glyphicon glyphicon-user"></span> Login as Buyer/publisher</a></li> 
+      <li><a href="/regBuyerPublisher"><span class="glyphicon glyphicon-user"></span>Register </a></li>
+       <li><a href="/loginBuyerPublisher"><span class="glyphicon glyphicon-user"></span> Login</a></li> 
         <!--  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
     </ul>
     </div>
