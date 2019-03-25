@@ -40,6 +40,7 @@ public class PublisherController {
 		else {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", publisher.getId());
+			session.setAttribute("publisher", publisher);
 			return "redirect:pubHome";
 		}
 	}

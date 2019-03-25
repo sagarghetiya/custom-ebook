@@ -8,66 +8,79 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DefaultController {
-	
+
 	@RequestMapping("/")
 	public String test() {
 		return "index";
 	}
-	
-/*	@RequestMapping("regBuyer")
-	public String regBuyer() {
-		return "regBuyer";
-	}
-	
-	@RequestMapping("regPublisher")
-	public String regPublisher() {
-		return "regPublisher";
-	}*/
+
+//	@RequestMapping("regBuyer")
+//	public String regBuyer() {
+//		return "regBuyer";
+//	}
+//	
+//	@RequestMapping("regPublisher")
+//	public String regPublisher() {
+//		return "regPublisher";
+//	}
+
 	@RequestMapping("regBuyerPublisher")
 	public String regBuyerPublisher() {
 		return "Register";
 	}
+
 	@RequestMapping("loginBuyerPublisher")
-	public String loginBuyerPublisher() {
-		return "Login";
-	}
-	/*@RequestMapping("loginPub")
-	public String LoginPublisher(ModelMap map, HttpSession session) {
-		if(session.getAttribute("id")!=null) {
+	public String loginBuyerPublisher(ModelMap map, HttpSession session) {
+		if (session.getAttribute("id") != null) {
 			return "redirect:pubHome";
 		}
-		map.addAttribute("error","");
-		return "publisherLogin";
-	}*/
-	
+		map.addAttribute("error", "");
+		return "Login";
+	}
+
+//	@RequestMapping("loginPub")
+//	public String LoginPublisher(ModelMap map, HttpSession session) {
+//		if(session.getAttribute("id")!=null) {
+//			return "redirect:pubHome";
+//		}
+//		map.addAttribute("error","");
+//		return "Login";
+//	}
+
 	@RequestMapping("pubHome")
 	public String publisherHome(ModelMap map, HttpSession session) {
-		if(session.getAttribute("id")==null) {
+		if (session.getAttribute("id") == null) {
 			return "redirect:loginBuyerPublisher";
-		}
-		else {
+		} else {
 			return "publisherHome";
 		}
 	}
-	
-/*	@RequestMapping("loginBuy")
-	public String LoginBuyer(ModelMap map, HttpSession session) {
-		if(session.getAttribute("id")!=null) {
-			return "redirect:buyHome";
-		}
-		map.addAttribute("error","");
-		return "buyerLogin";
-	}
-	*/
+
+//	@RequestMapping("loginBuy")
+//	public String LoginBuyer(ModelMap map, HttpSession session) {
+//		if(session.getAttribute("id")!=null) {
+//			return "redirect:buyHome";
+//		}
+//		map.addAttribute("error","");
+//		return "buyerLogin";
+//	}
+
 	@RequestMapping("buyHome")
 	public String buyerHome(ModelMap map, HttpSession session) {
-		if(session.getAttribute("id")==null) {
-			return "redirect:loginBuyerPublisher";
-		}
-		else {
+		if (session.getAttribute("id") == null) {
+			return "redirect:loginBuy";
+		} else {
 			return "buyerHome";
 		}
 	}
-	
-	
+
+	@RequestMapping("regBook")
+	public String regBook(ModelMap map, HttpSession session) {
+		if (session.getAttribute("publisher") == null) {
+			return "redirect:pubHome";
+		} else {
+			return "regBook";
+		}
+	}
+
 }

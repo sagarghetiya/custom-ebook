@@ -1,9 +1,11 @@
 package com.example.demo.ebook.model.publisher;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Publisher {
+public class Publisher implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
