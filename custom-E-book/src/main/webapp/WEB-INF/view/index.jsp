@@ -29,7 +29,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/regBuyerPublisher"><span class="glyphicon glyphicon-user"></span>Register as Buyer/publisher</a></li>
-      <!-- <li><a href="/regPublisher"><span class="glyphicon glyphicon-user"></span> Register as Publisher</a></li> -->    
+       <li><a href="/loginBuyerPublisher"><span class="glyphicon glyphicon-user"></span> Login as Buyer/publisher</a></li> 
         <!--  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
     </ul>
     </div>
