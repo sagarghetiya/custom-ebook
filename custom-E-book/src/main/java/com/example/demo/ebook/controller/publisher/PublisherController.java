@@ -35,17 +35,18 @@ public class PublisherController {
 		Publisher publisher = service.validatePublisher(loginId,password);
 		if(publisher==null) {
 			map.addAttribute("error", "username or password invalid");
-			return "publisherLogin";
+			return "Login";
 		}
 		else {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", publisher.getId());
+			session.setAttribute("publisher", publisher);
 			return "redirect:pubHome";
 		}
 	}
 	@RequestMapping("/logoutPublisher")
 	public String logoutPublisher(HttpSession session) {
 		session.invalidate();
-		return "redirect:loginPub";
+		return "redirect:/";
 	}
 }

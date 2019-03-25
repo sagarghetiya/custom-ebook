@@ -3,15 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<title>Register</title>
-
-    <style>
+<title>Login</title>
+ <style>
    * {
    
   box-sizing: border-box;
@@ -51,6 +48,7 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+
 }
 
 /* Change color on hover */
@@ -65,23 +63,14 @@ body {
   padding: 10px;
 }
 
-/* Left column */
-.column.side.left {
-  width: 29%;
-  margin-left:2%;
-  margin-right:0.2% 
-}
-
-/*  right column */
-.column.side.right {
-  width: 27%;
-   margin-left:0.2%;
-	margin-right:2%
+/* Left and right column */
+.column.side {
+  width: 28%;
 }
 
 /* Middle column */
 .column.middle {
-  width:38%;
+  width: 44%;
 }
 
 /* Clear floats after the columns */
@@ -101,37 +90,33 @@ body {
     </style>
 </head>
 <body>
-
-<div class="topnav">
+ <div class="topnav">
   <a href="/">Home</a>
- <a href="/loginBuyerPublisher">Login</a>
-</div>
-<div class="header">
-<div id="headerimg"  style="background-image:url(/images/reg2.jpg);height:235px; background-repeat:no-repeat;object-fit:cover;padding-top:-16px;margin-top:-16px;padding-bottom:-16px;margin-bottom:-16px;padding-left:-16px;margin-left:-16px;padding-right:-16px;margin-right:-16px;">
- </div>
-  
+    <a href="/regBuyerPublisher">Register</a>
 </div>
 
+<div class="header">
+<div id="headerimg"  style="background-image:url(/images/login1.jpg);height:290px; background-repeat:no-repeat;object-fit:cover;padding-top:-16px;margin-top:-16px;padding-bottom:-16px;margin-bottom:-16px;padding-left:-16px;margin-left:-16px;padding-right:-16px;margin-right:-16px;">
+ </div>
 
 <div class="row">
-  <div class="column side left">
-    <h2>Register as Buyer</h2>
-    <p>Make your own Customized Ebook with plenty of available collections  </p>
-     <button type="button" class="btn btn-info" id="myBtn1">Register Buyer</button>
+  <div class="column side">
+    <h2>Login as Buyer</h2>
+    <p>Login into the website,see and make use of respective books or chapters of your interest!</p>
+     <button type="button" class="btn btn-info" id="myBtn1">Login Buyer</button>
   </div>
   
   <div class="column middle">
-  <div id="image"  style="background-image:url(/images/ebook1.jpg);height:450px;">
+  <div id="image"  style="background-image:url(/images/ebook2.jpg);height:500px;">
   </div>
   </div>
   
-  <div class="column side right">
-    <h2>Register as Publisher</h2>
-    <p>Publish your own book and sell them chapterwise as well</p>
-  <button type="button" class="btn btn-info" id="myBtn2">Register Publisher</button>
+  <div class="column side">
+    <h2>Login as Publisher</h2>
+    <p>After login,you can sell your own book and make money out of it!</p>
+  <button type="button" class="btn btn-info" id="myBtn2">Login Publisher</button>
   </div>
 </div>
-
 
 <!-- Modal for buyer -->
   <div class="modal fade" id="myModal1" role="dialog">
@@ -141,51 +126,38 @@ body {
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Register</h4>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form action="registerBuyer" method="POST" role="form">
-         
-            <div class="form-group">
-             <label for="name"><span class="glyphicon glyphicon-user"></span>Buyer name</label>
-             <input type="text" class="form-control" name="name" placeholder="Enter Your Name"  />
-             </div>
-             
-              <div class="form-group">
+          <form action="validateBuyerLogin" method="POST" role="form">
+          
+           <div class="form-group">
              <label for="loginId"><span class="glyphicon glyphicon-user"></span>Login ID</label>
              <input type="text" class="form-control" name="loginId" placeholder="Enter LoginId" />
              </div>
              
-           
-            
-             <div class="form-group">
-             <label for="email"><span class="glyphicon glyphicon-user"></span>Email</label>
-             <input type="text" class="form-control" name="email" placeholder="Enter Email"/>
-             </div>
-               
-            <div class="form-group">
+              <div class="form-group">
               <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
              <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
-             
-            <div class="checkbox">
+              <div class="checkbox">
               <label><input type="checkbox" value="" checked>Remember me</label>
             </div>
             
           <!--   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a></p>--->
             
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register!!</button>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login!!</button>
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Already a member? <a href="#">Login</a></p>
+          <p>New User? <a href="regBuyerPublisher">Register</a></p>
         </div>
       </div>   
     </div>
   </div>
   <!-- end buyer -->
- <!-- Modal for publisher -->
+  <!-- Modal for publisher -->
   <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
   
@@ -193,50 +165,39 @@ body {
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Register</h4>
+          <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form action="registerPublisher" method="POST" role="form">
+          <form action="validatePublisherLogin" method="POST" role="form">
           
-          
-            <div class="form-group">
-             <label for="name"><span class="glyphicon glyphicon-user"></span>Publisher name</label>
-             <input type="text" class="form-control" name="name" placeholder="Enter Your Name" />
-             </div>
-             
-              <div class="form-group">
+           <div class="form-group">
              <label for="loginId"><span class="glyphicon glyphicon-user"></span>Login ID</label>
-             <input type="text" class="form-control" name="loginId" placeholder="Enter LoginId"/>
-             </div>
-            
-             <div class="form-group">
-             <label for="email"><span class="glyphicon glyphicon-user"></span>Email</label>
-             <input type="text" class="form-control" name="email" placeholder="Enter Email" />
+             <input type="text" class="form-control" name="loginId" placeholder="Enter LoginId" />
              </div>
              
               <div class="form-group">
               <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-             <input type="password" class="form-control" name="password" placeholder="Enter Password"/>
+             <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
-             
-            <div class="checkbox">
+              <div class="checkbox">
               <label><input type="checkbox" value="" checked>Remember me</label>
             </div>
             
           <!--   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a></p>--->
             
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register!!</button>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login!!</button>
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Already a member? <a href="#">Login</a></p>
+          <p>New User? <a href="regBuyerPublisher">Register</a></p>
         </div>
       </div>   
     </div>
   </div>
-  <!-- end publisher -->
-<script>
+  <!-- end buyer -->
+  
+  <script>
 $(document).ready(function(){
 	  $("#myBtn1").click(function(){
 	    $("#myModal1").modal();
@@ -249,5 +210,7 @@ $(document).ready(function(){
 	  });
 	});
 </script>
+
+</div>
 </body>
 </html>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ebook.model.buyer.Buyer;
-import com.example.demo.ebook.model.publisher.Publisher;
 import com.example.demo.ebook.service.buyer.BuyerService;
 
 @Controller
@@ -36,17 +35,18 @@ public class BuyerController {
 		Buyer buyer = service.validateBuyer(loginId,password);
 		if(buyer==null) {
 			map.addAttribute("error", "username or password invalid");
-			return "buyerLogin";
+			return "Login";
 		}
 		else {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", buyer.getId());
+			session.setAttribute("buyer", buyer);
 			return "redirect:buyHome";
 		}
 	}
 	@RequestMapping("/logoutBuyer")
 	public String logoutPublisher(HttpSession session) {
 		session.invalidate();
-		return "redirect:loginBuy";
+		return "redirect:/";
 	}
 }

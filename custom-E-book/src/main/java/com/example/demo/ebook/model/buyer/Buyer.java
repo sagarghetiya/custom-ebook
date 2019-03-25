@@ -1,9 +1,11 @@
 package com.example.demo.ebook.model.buyer;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Buyer {
+public class Buyer implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;

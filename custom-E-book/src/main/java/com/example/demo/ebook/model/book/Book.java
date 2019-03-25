@@ -18,6 +18,7 @@ public class Book {
 	private int totalNoOfPages;
 	private double price;
 	private String bookLoc;
+	private String keywords;
 	
 	public Book() {
 		
@@ -85,6 +86,14 @@ public class Book {
 
 	public void setBookLoc(String bookLoc) {
 		this.bookLoc = bookLoc;
+	}
+
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 	
 	
