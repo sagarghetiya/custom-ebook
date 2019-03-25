@@ -8,6 +8,7 @@ public class Buyer {
 	@GeneratedValue
 	private int id;
 	private String name;
+	@Column(unique=true)
 	private String loginId;
 	private String email;
 	private String password;
