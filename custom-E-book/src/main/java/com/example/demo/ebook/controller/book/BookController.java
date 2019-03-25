@@ -25,7 +25,7 @@ public class BookController {
 		
 		Publisher publisher=(Publisher) request.getSession(false).getAttribute("publisher");
 		int result = bookservice.registerBook(book,publisher);
-		map.addAttribute("result", "user created with id "+result);
+		map.addAttribute("result", "book created with id "+result);
 		return "successRegistration";
 	}
 //	public String registerBook(ModelMap map) {

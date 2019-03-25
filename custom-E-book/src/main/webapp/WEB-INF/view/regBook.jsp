@@ -15,6 +15,7 @@
 				Total No. of pages : <input type="number" name="totalNoOfPages" />
 				Price : <input type="decimal" name="price">
 				Loc   : <input type="text" name="bookLoc" />
+				keywords   : <input type="text" name="keywords" />
 			<input type="submit" name="register">
 		</pre>
 	</form>
