@@ -14,50 +14,56 @@ public class DefaultController {
 		return "index";
 	}
 	
-	@RequestMapping("regBuyer")
-	public String regBuyer() {
-		return "regBuyer";
-	}
+//	@RequestMapping("regBuyer")
+//	public String regBuyer() {
+//		return "regBuyer";
+//	}
+//	
+//	@RequestMapping("regPublisher")
+//	public String regPublisher() {
+//		return "regPublisher";
+//	}
 	
-	@RequestMapping("regPublisher")
-	public String regPublisher() {
-		return "regPublisher";
-	}
 	@RequestMapping("regBuyerPublisher")
 	public String regBuyerPublisher() {
 		return "Register";
 	}
 	@RequestMapping("loginBuyerPublisher")
-	public String loginBuyerPublisher() {
-		return "Login";
-	}
-	@RequestMapping("loginPub")
-	public String LoginPublisher(ModelMap map, HttpSession session) {
+	public String loginBuyerPublisher(ModelMap map, HttpSession session) {
 		if(session.getAttribute("id")!=null) {
 			return "redirect:pubHome";
 		}
 		map.addAttribute("error","");
-		return "publisherLogin";
+		return "Login";
 	}
+	
+//	@RequestMapping("loginPub")
+//	public String LoginPublisher(ModelMap map, HttpSession session) {
+//		if(session.getAttribute("id")!=null) {
+//			return "redirect:pubHome";
+//		}
+//		map.addAttribute("error","");
+//		return "publisherLogin";
+//	}
 	
 	@RequestMapping("pubHome")
 	public String publisherHome(ModelMap map, HttpSession session) {
 		if(session.getAttribute("id")==null) {
-			return "redirect:loginPub";
+			return "redirect:loginBuyerPublisher";
 		}
 		else {
 			return "publisherHome";
 		}
 	}
 	
-	@RequestMapping("loginBuy")
-	public String LoginBuyer(ModelMap map, HttpSession session) {
-		if(session.getAttribute("id")!=null) {
-			return "redirect:buyHome";
-		}
-		map.addAttribute("error","");
-		return "buyerLogin";
-	}
+//	@RequestMapping("loginBuy")
+//	public String LoginBuyer(ModelMap map, HttpSession session) {
+//		if(session.getAttribute("id")!=null) {
+//			return "redirect:buyHome";
+//		}
+//		map.addAttribute("error","");
+//		return "buyerLogin";
+//	}
 	
 	@RequestMapping("buyHome")
 	public String buyerHome(ModelMap map, HttpSession session) {
