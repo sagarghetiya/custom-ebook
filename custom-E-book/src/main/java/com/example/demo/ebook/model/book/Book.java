@@ -19,7 +19,16 @@ public class Book {
 	private double price;
 	private String bookLoc;
 	private String keywords;
+	private boolean chaptersAdded;
 	
+	public boolean isChaptersAdded() {
+		return chaptersAdded;
+	}
+
+	public void setChaptersAdded(boolean chaptersAdded) {
+		this.chaptersAdded = chaptersAdded;
+	}
+
 	public Book() {
 		
 	}

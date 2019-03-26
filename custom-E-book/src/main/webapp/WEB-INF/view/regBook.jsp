@@ -7,15 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="registerBook" method="post">
+	<form action="registerBook" method="post" enctype="multipart/form-data">
 		<pre>
 				ISBN No.     : <input type="text" name="isbn" />
 				name     : <input type="text" name="bookName" />
-				No of chapters : <input type="number" name="noOfChapter" />
+				No of chapters : <input type="number" name="noOfChapters" />
 				Total No. of pages : <input type="number" name="totalNoOfPages" />
 				Price : <input type="decimal" name="price">
-				Loc   : <input type="text" name="bookLoc" />
 				keywords   : <input type="text" name="keywords" />
+				<label>upload your book : </label><input type="file" name="file" />
 			<input type="submit" name="register">
 		</pre>
 	</form>
