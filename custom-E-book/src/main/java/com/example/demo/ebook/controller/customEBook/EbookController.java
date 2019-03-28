@@ -18,18 +18,18 @@ import com.example.demo.ebook.service.customEBook.EbookService;
 @Controller
 public class EbookController {
 	
-/*	@Autowired
+	@Autowired
 	EbookService service;
 
 	@RequestMapping(value = "/showEbookContent", method = RequestMethod.POST)
-	public String ShowContent(ModelMap map,HttpSession session,@RequestParam("chapters")List<Chapter>chapters,@RequestParam("ebookid")ebookid)
+	public String ShowContent(ModelMap map,HttpSession session,@RequestParam("chapters")List<Chapter>chapters)
 	{
 		if(session.getAttribute("id")==null) {
 			return "redirect:loginBuyerPublisher";
 		}
 		Buyer buyer=(Buyer) session.getAttribute("buyer");
-		CustomEbook result=service.customizeContent(buyer,chapters,ebookid);
-		map.addAttribute("result","custom ebook created with id "+result.getEbookId());
-		return "successRegistration";
-	}*/
+		List<CustomEBook> list=service.showContent(buyer);
+		map.addAttribute("chapters",list);
+		return "Cart";
+	}
 }

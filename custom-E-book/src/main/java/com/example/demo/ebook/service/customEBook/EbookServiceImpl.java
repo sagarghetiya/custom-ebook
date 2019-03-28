@@ -2,6 +2,7 @@ package com.example.demo.ebook.service.customEBook;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.ebook.model.buyer.Buyer;
@@ -11,12 +12,13 @@ import com.example.demo.ebook.repository.customEBook.EbookRepository;
 
 @Service
 public class EbookServiceImpl implements EbookService{
+	@Autowired
+	EbookRepository repository;
 
-/*	@Override
-	public String customizeContent(Buyer buyer,List<Chapter>chapters,int ebookid)
+	@Override
+	public List<CustomEBook> showContent(Buyer buyer)
 	{
-		
-		
-		return "ebook content updated";
-	}*/
+		List<CustomEBook> ebooks=repository.findByBuyer(buyer);
+		return ebooks;	
+	}
 }
