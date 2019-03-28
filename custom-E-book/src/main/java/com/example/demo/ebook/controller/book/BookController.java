@@ -2,6 +2,7 @@ package com.example.demo.ebook.controller.book;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,7 +35,27 @@ public class BookController {
 		Book result = service.registerBook(book,publisher);
 		map.addAttribute("result", "book created with id "+result.getId());
 		service.saveBook(file, result, publisher.getId());
-		return "successRegistration";
+		session.setAttribute("book",result);
+		return "successBookRegistration";
+	}
+	
+	@RequestMapping("pubHome")
+	public String publisherHome(ModelMap map, HttpSession session) {
+		if (session.getAttribute("id") == null || session.getAttribute("publisher")==null) {
+			return "redirect:loginBuyerPublisher";
+		} else {
+			Publisher publisher =(Publisher) session.getAttribute("publisher");
+			List<Book> publisherBooks = service.getPublisherBooks(publisher);
+			System.out.println(publisherBooks.get(0).getBookName());
+			map.addAttribute("publisherBooks", publisherBooks);
+			return "publisherHome";
+		}
+		
+	}
+	@RequestMapping("confChapters")
+	public String confChapters(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		
+		return "";
 	}
 
 }
