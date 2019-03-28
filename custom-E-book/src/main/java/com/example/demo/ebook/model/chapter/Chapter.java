@@ -1,5 +1,7 @@
 package com.example.demo.ebook.model.chapter;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +10,7 @@ import javax.persistence.ManyToOne;
 import com.example.demo.ebook.model.book.Book;
 
 @Entity
-public class Chapter {
+public class Chapter implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id;

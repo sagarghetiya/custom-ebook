@@ -2,7 +2,7 @@ package com.example.demo.ebook.service.book;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,11 @@ public class BookServiceImpl implements BookService{
 			repository.save(book);
 		}
 		return 0;
+	}
+	@Override
+	public List<Book> getPublisherBooks(Publisher publisher) {
+		List<Book> byPublisher = repository.findByPublisher(publisher);
+		return byPublisher;
 	}
 
 }
