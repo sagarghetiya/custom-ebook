@@ -16,6 +16,7 @@
 				Price : <input type="decimal" name="price">
 				keywords   : <input type="text" name="keywords" />
 				<label>upload your book : </label><input type="file" name="file" />
+				description   : <input type="text" name="description" />
 			<input type="submit" name="register">
 		</pre>
 	</form>

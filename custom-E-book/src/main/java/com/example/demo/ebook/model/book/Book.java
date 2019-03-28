@@ -10,6 +10,7 @@ public class Book {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(unique=true)
 	private String isbn;
 	private String bookName;
 	@ManyToOne
@@ -19,7 +20,11 @@ public class Book {
 	private double price;
 	private String bookLoc;
 	private String keywords;
+
 	private boolean chaptersAdded;
+
+	private String description;
+
 	
 	public boolean isChaptersAdded() {
 		return chaptersAdded;
@@ -103,6 +108,14 @@ public class Book {
 
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

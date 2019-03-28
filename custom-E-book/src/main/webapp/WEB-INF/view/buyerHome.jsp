@@ -9,6 +9,7 @@
 <body>
 
 	id of the publisher is <%=session.getAttribute("id") %> <br/><br>
+	Hello,${buyer.name}<br>
 	<a href="logoutBuyer">logout</a>
 </body>
 </html>

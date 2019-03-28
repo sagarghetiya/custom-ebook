@@ -1,5 +1,6 @@
 package com.example.demo.ebook.controller.def;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,8 @@ public class DefaultController {
 	}
 
 	@RequestMapping("loginBuyerPublisher")
-	public String loginBuyerPublisher(ModelMap map, HttpSession session) {
+	public String loginBuyerPublisher(ModelMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
 		if (session.getAttribute("id") != null) {
 			if(session.getAttribute("publisher")!=null) {
 				return "redirect:pubHome";
