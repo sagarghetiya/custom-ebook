@@ -1,17 +1,21 @@
 package com.example.demo.ebook.model.book;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import com.example.demo.ebook.model.publisher.Publisher; 
 
 @Entity
-public class Book {
+public class Book implements Serializable{
 
 	@Id
 	@GeneratedValue
 	private int id;
 	private String isbn;
 	private String bookName;
+	
+
 	@ManyToOne
 	private Publisher publisher;
 	private int noOfChapters;

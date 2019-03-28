@@ -52,14 +52,7 @@ public class DefaultController {
 //		return "Login";
 //	}
 
-	@RequestMapping("pubHome")
-	public String publisherHome(ModelMap map, HttpSession session) {
-		if (session.getAttribute("id") == null) {
-			return "redirect:loginBuyerPublisher";
-		} else {
-			return "publisherHome";
-		}
-	}
+	
 
 //	@RequestMapping("loginBuy")
 //	public String LoginBuyer(ModelMap map, HttpSession session) {
