@@ -82,5 +82,9 @@ public class DefaultController {
 			return "regBook";
 		}
 	}
+	@RequestMapping("search")
+	public String search() {
+		return "search";
+	}
 
 }

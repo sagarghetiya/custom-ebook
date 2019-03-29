@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 import com.example.demo.ebook.model.chapter.Chapter;
+import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.service.customEBook.EbookService;
@@ -18,10 +19,10 @@ import com.example.demo.ebook.service.customEBook.EbookService;
 @Controller
 public class EbookController {
 	
-/*	@Autowired
+	@Autowired
 	EbookService service;
 
-	@RequestMapping(value = "/showEbookContent", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/showEbookContent", method = RequestMethod.POST)
 	public String ShowContent(ModelMap map,HttpSession session,@RequestParam("chapters")List<Chapter>chapters,@RequestParam("ebookid")ebookid)
 	{
 		if(session.getAttribute("id")==null) {
@@ -32,4 +33,21 @@ public class EbookController {
 		map.addAttribute("result","custom ebook created with id "+result.getEbookId());
 		return "successRegistration";
 	}*/
+	@RequestMapping(value = "/searchResult", method = RequestMethod.POST)
+	public String searchResult(@RequestParam("keywords") String keywords,ModelMap map)
+	{
+		List<Book> books = service.getBooks(keywords);
+		//List<Chapter> chapters = service.getChapters(keywords);
+		if(books!=null)
+			map.addAttribute("Books",books);
+//		if(chapters!=null)
+//			map.addAttribute("chapters", chapters);
+		return "searchResult";
+	}
+	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+	public String addToCart(@RequestParam("bookIdList") List<Integer> bookIdList,ModelMap map) {
+		map.addAttribute("booksId",bookIdList);
+		return "cart";
+	}
+	
 }
