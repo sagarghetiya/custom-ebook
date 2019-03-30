@@ -12,4 +12,5 @@ public interface BookService {
 	Book registerBook(Book book,Publisher publisher);
 	int saveBook(MultipartFile file, Book book, int publisherId) throws IOException;
 	List<Book> getPublisherBooks(Publisher publisher);
+	Book getBookById(int id);
 }

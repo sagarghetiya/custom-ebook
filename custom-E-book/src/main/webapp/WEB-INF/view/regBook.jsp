@@ -13,7 +13,7 @@
 				name     : <input type="text" name="bookName" />
 				No of chapters : <input type="number" name="noOfChapters" />
 				Total No. of pages : <input type="number" name="totalNoOfPages" />
-				Price : <input type="decimal" name="price">
+				Price : <input type="number" name="price">
 				keywords   : <input type="text" name="keywords" />
 				<label>upload your book : </label><input type="file" name="file" />
 				description   : <input type="text" name="description" />

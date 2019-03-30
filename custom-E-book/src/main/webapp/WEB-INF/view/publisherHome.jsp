@@ -28,7 +28,7 @@
 			
 				<tr>
 					<td>${book.isbn}</td>
-					<td><a href="#">${book.bookName}</a></td>
+					<td><a href="confChapters?id=${book.id}">${book.bookName}</a></td>
 					<td>${book.price}</td>
 					<td>
 						<c:choose>
