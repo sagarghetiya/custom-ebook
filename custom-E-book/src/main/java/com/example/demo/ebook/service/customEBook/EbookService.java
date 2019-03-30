@@ -5,4 +5,6 @@ import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 public interface EbookService {
 	List<CustomEBook> showContent(Buyer buyer);
+	void deleteChapter(Buyer buyer,Chapter chapter);
+	int updateEbook(List<Integer>ebookid,List<Integer>sequence);
 }

@@ -8,8 +8,9 @@
 </head>
 <body>
 
-	id of the publisher is <%=session.getAttribute("id") %> <br/><br>
+	id of the buyer is <%=session.getAttribute("id") %> <br/><br>
 	Hello,${buyer.name}<br>
+	<a href="/showEbookContent">Go to Cart</a>
 	<a href="logoutBuyer">logout</a>
 </body>
 </html>

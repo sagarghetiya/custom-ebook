@@ -18,7 +18,30 @@ public class EbookServiceImpl implements EbookService{
 	@Override
 	public List<CustomEBook> showContent(Buyer buyer)
 	{
-		List<CustomEBook> ebooks=repository.findByBuyer(buyer);
+		List<CustomEBook> ebooks=repository.findByBuyerOrderBySequence(buyer);
 		return ebooks;	
+	}
+	@Override
+	public void deleteChapter(Buyer buyer,Chapter chapter)
+	{
+		List<CustomEBook> ebooks=repository.findByBuyerAndChapter(buyer, chapter);
+		CustomEBook ebook=ebooks.get(0);
+		repository.delete(ebook);
+	}
+	@Override
+	public int updateEbook(List<Integer>ebookid,List<Integer>sequence)
+	{ 	int i;
+		for( i=0;i<ebookid.size();i++)
+		{
+			int id=((Integer)ebookid.get(i)).intValue();
+			int seq=((Integer)sequence.get(i)).intValue();
+			List<CustomEBook> ebooks=repository.findById(id);
+			CustomEBook b=(CustomEBook)ebooks.get(0);
+			b.setSequence(seq);
+			repository.save(b);
+		}
+		if(i==ebookid.size())
+			return 1;
+		else return 0;
 	}
 }
