@@ -17,6 +17,14 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<table>
+			<c:forEach items="${chaptersId}" var="id">
+				<tr>
+					<td>${id}</td>
+<%-- 					<td>${book.isbn}</td> --%>
+				</tr>
+			</c:forEach>
+		</table>
 		<input type="submit" value="Submit" />
 	</form>
 </body>

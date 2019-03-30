@@ -9,5 +9,5 @@ public interface EbookService {
 	//String customizeContent(Buyer buyer,List<Chapter>chapters,int ebookid);
 	List<Book> getBooks(String keywords);
 	List<Chapter> getChapters(String keywords);
-	int saveEBook(List<Chapter> chapters,Buyer buyer);
+	int saveEBook(List<Integer> chapters_id,Buyer buyer);
 }

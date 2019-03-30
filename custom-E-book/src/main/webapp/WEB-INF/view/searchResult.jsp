@@ -15,12 +15,27 @@
 			<th>book name</th>
 			<th>book isbn</th>
 		</tr>
-			<c:forEach items="${Books}" var="book">
+			<c:forEach items="${books}" var="book">
 				<tr>
 					<td><input type="checkbox" name="bookIdList"
 						value="${book.id}"></td>
 					<td>${book.bookName}</td>
 					<td>${book.isbn}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<table>
+		<tr>
+			<th>checkbox</th>
+			<th>chapter name</th>
+			<th>chapter description</th>
+		</tr>
+			<c:forEach items="${chapters}" var="chapter">
+				<tr>
+					<td><input type="checkbox" name="chapterIdList"
+						value="${chapter.id}"></td>
+					<td>${chapter.name}</td>
+					<td>${chapter.description}</td>
 				</tr>
 			</c:forEach>
 		</table>

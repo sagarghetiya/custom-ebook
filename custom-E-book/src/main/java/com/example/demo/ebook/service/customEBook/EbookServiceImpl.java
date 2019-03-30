@@ -19,7 +19,7 @@ import com.example.demo.ebook.repository.customEBook.EbookRepository;
 @Service
 public class EbookServiceImpl implements EbookService{
 	@Autowired
-	BookRepository repository;
+	BookRepository book_repository;
 	ChapterRepository chap_repository;
 	EbookRepository ebook_repository;
 	//CustomEBook ebook;
@@ -32,7 +32,7 @@ public class EbookServiceImpl implements EbookService{
 		Set<Book> books_set = new LinkedHashSet<>();
 		for(String keyword:keywordList)
 		{
-			List<Book> books_temp = repository.findByKeywordsContaining(keyword);
+			List<Book> books_temp = book_repository.findByKeywordsContaining(keyword);
 			if(books_temp!=null)
 				books_set.addAll(books_temp);			
 		}
@@ -47,11 +47,14 @@ public class EbookServiceImpl implements EbookService{
 	public List<Chapter> getChapters(String keywords) {
 		String[] keywordList = keywords.split(" ");
 		List<Chapter> chapters = new ArrayList<>();
+		Set<Chapter> chapters_set = new LinkedHashSet<>();
 		for(String keyword:keywordList)
 		{
 			List<Chapter> chapters_temp = chap_repository.findByKeywordsContaining(keyword);
-			chapters.addAll(chapters_temp);	
+			if(chapters_temp!=null)
+				chapters_set.addAll(chapters_temp);	
 		}
+		chapters.addAll(chapters_set);
 		if(chapters.size()==0)
 			return null;
 		else
@@ -59,7 +62,8 @@ public class EbookServiceImpl implements EbookService{
 	}
 
 	@Override
-	public int saveEBook(List<Chapter> chapters,Buyer buyer) {
+	public int saveEBook(List<Integer> chapters_id,Buyer buyer) {
+		List<Chapter> chapters = chap_repository.findByIdIn(chapters_id);
 		int sequence=0;
 			for(Chapter chapter:chapters)
 			{

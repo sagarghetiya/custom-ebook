@@ -37,16 +37,21 @@ public class EbookController {
 	public String searchResult(@RequestParam("keywords") String keywords,ModelMap map)
 	{
 		List<Book> books = service.getBooks(keywords);
-		//List<Chapter> chapters = service.getChapters(keywords);
+		List<Chapter> chapters = service.getChapters(keywords);
 		if(books!=null)
-			map.addAttribute("Books",books);
-//		if(chapters!=null)
-//			map.addAttribute("chapters", chapters);
+			map.addAttribute("books",books);
+		if(chapters!=null)
+			map.addAttribute("chapters", chapters);
 		return "searchResult";
 	}
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-	public String addToCart(@RequestParam("bookIdList") List<Integer> bookIdList,ModelMap map) {
+	public String addToCart(@RequestParam("bookIdList") List<Integer> bookIdList,
+										@RequestParam("chapterIdList") List<Integer> chapterIdList,
+										ModelMap map,HttpSession session) {
+		Buyer buyer = (Buyer) session.getAttribute("buyer");
+		int save = service.saveEBook(chapterIdList, buyer);
 		map.addAttribute("booksId",bookIdList);
+		map.addAttribute("chaptersId",chapterIdList);
 		return "cart";
 	}
 	
