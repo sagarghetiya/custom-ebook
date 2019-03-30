@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class BookController {
 		Book result = service.registerBook(book,publisher);
 		map.addAttribute("result", "book created with id "+result.getId());
 		service.saveBook(file, result, publisher.getId());
-		session.setAttribute("book",result);
+		map.addAttribute("book",result);
 		return "successBookRegistration";
 	}
 	
@@ -54,8 +55,15 @@ public class BookController {
 	}
 	@RequestMapping("confChapters")
 	public String confChapters(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		if (session.getAttribute("id") == null || session.getAttribute("publisher")==null) {
+			return "redirect:loginBuyerPublisher";
+		}
+		else {
+			Book book = service.getBookById(id);
+			session.setAttribute("book", book);
+			return "configChapters";
+		}
 		
-		return "";
 	}
 
 }

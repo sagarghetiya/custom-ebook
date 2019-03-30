@@ -3,6 +3,7 @@ package com.example.demo.ebook.service.book;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class BookServiceImpl implements BookService{
 	public List<Book> getPublisherBooks(Publisher publisher) {
 		List<Book> byPublisher = repository.findByPublisher(publisher);
 		return byPublisher;
+	}
+	@Override
+	public Book getBookById(int id) {
+		Optional<Book> book = repository.findById(id);
+		return book.get();
 	}
 
 }
