@@ -22,9 +22,9 @@ public class EbookServiceImpl implements EbookService{
 		return ebooks;	
 	}
 	@Override
-	public void deleteChapter(Buyer buyer,Chapter chapter)
+	public void deleteChapter(int id)
 	{
-		List<CustomEBook> ebooks=repository.findByBuyerAndChapter(buyer, chapter);
+		List<CustomEBook> ebooks=repository.findById(id);
 		CustomEBook ebook=ebooks.get(0);
 		repository.delete(ebook);
 	}

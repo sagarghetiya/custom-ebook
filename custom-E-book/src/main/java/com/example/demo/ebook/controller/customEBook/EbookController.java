@@ -1,17 +1,20 @@
 package com.example.demo.ebook.controller.customEBook;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
-import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.buyer.Buyer;
+import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.service.customEBook.EbookService;
 
@@ -34,11 +37,10 @@ public class EbookController {
 		map.addAttribute("size", list.size());
 		return "Cart";
 	}
-	@RequestMapping(value = "/deletechapter", method = RequestMethod.POST)
-	public String DeleteContent(@RequestParam("chapter")Chapter chapter,HttpSession session)
+	@RequestMapping(value = "/deletechapter/{id}")
+	public String DeleteContent(@PathVariable(value="id") int id)
 	{
-		Buyer buyer=(Buyer) session.getAttribute("buyer");
-		service.deleteChapter(buyer,chapter);
+		service.deleteChapter(id);
 		return "Cart";
 	}
 	/*@RequestMapping(value = "/validateContent")
@@ -46,7 +48,7 @@ public class EbookController {
 	{	List<Integer>duplicate=new ArrayList<Integer>();
 		for(int i=0;i<ebookid.size();i++)
 		{
-			duplicate.add(ebookid.get(i));
+			duplicate.add(ebookid.get(i));List<CustomEBook> findByBuyerAndChapter(Buyer buyer,Chapter chapter);
 		}
 		for (int i = 0; i < duplicate.size(); i++) {
 		    if (duplicate.get(Math.abs(duplicate.get(i))) > 0) {
