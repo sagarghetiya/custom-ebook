@@ -11,8 +11,27 @@
 	$(document).ready(function(){
 		$(":button").click(function() {
 			var id = $(this).attr('id');
+			var startPage = $("#start_page_"+id).val();
+			var endPage = $("#end_page_"+id).val();
+			var totalPages = $("#totalNoOfPages").val();
+			var sourceLoc = $("#bookLoc").val();
+			$.ajax({
+				url:'preview',
+				data: {id : id, startPage : startPage, endPage : endPage, totalPages : totalPages, source : sourceLoc}
+//  				success: function(responseText) {
+//  					//$("#start_img_"+id).show();
+// 					//$("#end_img_"+id).show();
+//  					if(responseText != "") {
+//  						alert(responseText);
+//  					}
+//  				}
+			});
+			$("#start_img_"+id).load(location.href + " #start_img_"+id);
 			$("#start_img_"+id).show();
-			alert("id = "+id);
+			$("#end_img_"+id).load(location.href + " #end_img_"+id);
+			$("#end_img_"+id).show();
+			
+// 			alert("id = "+id + " start page = "+startPage+" endPage = "+endPage);
 		});
 	});
 </script>
@@ -23,9 +42,9 @@
 			<input type="text" name="isbn" value="${book.isbn}"/>
 			<input type="text" name="bookName" value="${book.bookName}"/>
 			<input type="number" name="noOfChapters" value="${book.noOfChapters}"/>
-			<input type="number" name="totalNoOfPages" value="${book.totalNoOfPages}"/>
+			<input type="number" id="totalNoOfPages" name="totalNoOfPages" value="${book.totalNoOfPages}"/>
 			<input type="number" name="price" value="${book.price}"/>
-			<input type="text" name="bookLoc" value="${book.bookLoc}"/>
+			<input type="text" id="bookLoc" name="bookLoc" value="${book.bookLoc}"/>
 			<input type="text" name="keywords" value="${book.keywords}"/>
 		<c:forEach var="i" begin="1" end="${book.noOfChapters}">
 			Chapter ${i}  
@@ -41,8 +60,8 @@
 			<input type="number" min="1" max="${book.totalNoOfPages}"
 				name="end_page_${i}" id="end_page_${i}">
 			<br> <button type="button" id="${i}">preview</button> <br>
-			<img src="/images/ebook${i}.jpg" hidden="true" id="start_img_${i}" height="42" width="42">
-			<img src="" hidden="true" id="end_img_${i}">
+			<img src="/images/temp/start_preview_${i}.jpg" hidden="true" id="start_img_${i}" height="100" width="75">
+			<img src="/images/temp/end_preview_${i}.jpg" hidden="true" id="end_img_${i}" height="100" width="75">
 			<br>
 			<br>
 		</c:forEach>

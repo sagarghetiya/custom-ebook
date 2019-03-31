@@ -47,7 +47,7 @@ public class BookController {
 		} else {
 			Publisher publisher =(Publisher) session.getAttribute("publisher");
 			List<Book> publisherBooks = service.getPublisherBooks(publisher);
-			System.out.println(publisherBooks.get(0).getBookName());
+			//System.out.println(publisherBooks.get(0).getBookName());
 			map.addAttribute("publisherBooks", publisherBooks);
 			return "publisherHome";
 		}
@@ -60,7 +60,9 @@ public class BookController {
 		}
 		else {
 			Book book = service.getBookById(id);
-			session.setAttribute("book", book);
+			System.out.println(book);
+			System.out.println(book.getBookName());
+			map.addAttribute("book", book);
 			return "configChapters";
 		}
 		
