@@ -20,7 +20,9 @@ import com.example.demo.ebook.repository.customEBook.EbookRepository;
 public class EbookServiceImpl implements EbookService{
 	@Autowired
 	BookRepository book_repository;
+	@Autowired
 	ChapterRepository chap_repository;
+	@Autowired
 	EbookRepository ebook_repository;
 	//CustomEBook ebook;
 	//Chapter chapter;
