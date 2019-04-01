@@ -47,7 +47,7 @@ public class EbookController {
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
 	public String addToCart(@RequestParam(value = "bookIdList", required = false) List<Integer> bookIdList,
-			@RequestParam("chapterIdList") List<Integer> chapterIdList, ModelMap map, HttpSession session) {
+			@RequestParam(value = "chapterIdList",required=false) List<Integer> chapterIdList, ModelMap map, HttpSession session) {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
 		int save = service.saveEBook(bookIdList, chapterIdList, buyer);
 		if (save != 0) {
