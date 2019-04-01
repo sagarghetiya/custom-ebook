@@ -2,6 +2,7 @@ package com.example.demo.ebook.model.customEBook;
 
 import javax.persistence.*;
 
+import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.chapter.Chapter;
 
@@ -10,12 +11,13 @@ public class CustomEBook {
 	@Id
 	@GeneratedValue
 	private int id;
-	private double price;
+	@ManyToOne
+	private Book book;
 	@ManyToOne
 	private Chapter chapter;
 	@ManyToOne
 	private Buyer buyer;
-	int sequence;
+	private int sequence;
 
 	public int getId() {
 		return id;
@@ -23,12 +25,11 @@ public class CustomEBook {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public double getPrice() {
-		return price;
+	public Book getBook() {
+		return book;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 	public Chapter getChapter() {
 		return chapter;

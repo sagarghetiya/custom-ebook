@@ -9,13 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="searchResult" method="post">
+		<pre>
+				keywords   : <input type="text" name="keywords" value="${keywords}"/>
+			<input type="submit" name="search">
+		</pre>
+	</form>
 	<form action="addToCart" method="post">
 		<table>
-		<tr>
-			<th>checkbox</th>
-			<th>book name</th>
-			<th>book isbn</th>
-		</tr>
+			<tr>
+				<th>checkbox</th>
+				<th>book name</th>
+				<th>book isbn</th>
+			</tr>
 			<c:forEach items="${books}" var="book">
 				<tr>
 					<td><input type="checkbox" name="bookIdList"
@@ -26,11 +32,11 @@
 			</c:forEach>
 		</table>
 		<table>
-		<tr>
-			<th>checkbox</th>
-			<th>chapter name</th>
-			<th>chapter description</th>
-		</tr>
+			<tr>
+				<th>checkbox</th>
+				<th>chapter name</th>
+				<th>chapter description</th>
+			</tr>
 			<c:forEach items="${chapters}" var="chapter">
 				<tr>
 					<td><input type="checkbox" name="chapterIdList"

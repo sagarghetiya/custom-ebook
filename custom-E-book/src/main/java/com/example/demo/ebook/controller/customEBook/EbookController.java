@@ -18,41 +18,49 @@ import com.example.demo.ebook.service.customEBook.EbookService;
 
 @Controller
 public class EbookController {
-	
+
 	@Autowired
 	EbookService service;
 
-/*	@RequestMapping(value = "/showEbookContent", method = RequestMethod.POST)
-	public String ShowContent(ModelMap map,HttpSession session,@RequestParam("chapters")List<Chapter>chapters,@RequestParam("ebookid")ebookid)
-	{
-		if(session.getAttribute("id")==null) {
-			return "redirect:loginBuyerPublisher";
-		}
-		Buyer buyer=(Buyer) session.getAttribute("buyer");
-		CustomEbook result=service.customizeContent(buyer,chapters,ebookid);
-		map.addAttribute("result","custom ebook created with id "+result.getEbookId());
-		return "successRegistration";
-	}*/
+	/*
+	 * @RequestMapping(value = "/showEbookContent", method = RequestMethod.POST)
+	 * public String ShowContent(ModelMap map,HttpSession
+	 * session,@RequestParam("chapters")List<Chapter>chapters,@RequestParam(
+	 * "ebookid")ebookid) { if(session.getAttribute("id")==null) { return
+	 * "redirect:loginBuyerPublisher"; } Buyer buyer=(Buyer)
+	 * session.getAttribute("buyer"); CustomEbook
+	 * result=service.customizeContent(buyer,chapters,ebookid);
+	 * map.addAttribute("result","custom ebook created with id "+result.getEbookId()
+	 * ); return "successRegistration"; }
+	 */
 	@RequestMapping(value = "/searchResult", method = RequestMethod.POST)
-	public String searchResult(@RequestParam("keywords") String keywords,ModelMap map)
-	{
+	public String searchResult(@RequestParam("keywords") String keywords, ModelMap map) {
 		List<Book> books = service.getBooks(keywords);
 		List<Chapter> chapters = service.getChapters(keywords);
-		if(books!=null)
-			map.addAttribute("books",books);
-		if(chapters!=null)
+		if (books != null)
+			map.addAttribute("books", books);
+		if (chapters != null)
 			map.addAttribute("chapters", chapters);
+		map.addAttribute("keywords", keywords);
 		return "searchResult";
 	}
+
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-	public String addToCart(@RequestParam("bookIdList") List<Integer> bookIdList,
-										@RequestParam("chapterIdList") List<Integer> chapterIdList,
-										ModelMap map,HttpSession session) {
+	public String addToCart(@RequestParam(value = "bookIdList", required = false) List<Integer> bookIdList,
+			@RequestParam("chapterIdList") List<Integer> chapterIdList, ModelMap map, HttpSession session) {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		int save = service.saveEBook(chapterIdList, buyer);
-		map.addAttribute("booksId",bookIdList);
-		map.addAttribute("chaptersId",chapterIdList);
+		int save = service.saveEBook(bookIdList, chapterIdList, buyer);
+		if (save != 0) {
+			if (bookIdList != null)
+				map.addAttribute("booksId", bookIdList);
+			else
+				map.addAttribute("booksId", null);
+			if (chapterIdList != null)
+				map.addAttribute("chaptersId", chapterIdList);
+			else
+				map.addAttribute("chaptersId", null);
+		}
 		return "cart";
 	}
-	
+
 }
