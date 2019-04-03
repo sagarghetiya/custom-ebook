@@ -44,4 +44,14 @@ public class EbookServiceImpl implements EbookService{
 			return 1;
 		else return 0;
 	}
+	@Override
+	public void deleteContentAfterSave(Buyer buyer)
+	{
+		List<CustomEBook> ebooks=repository.findByBuyerOrderBySequence(buyer);
+		for(int i=0;i<ebooks.size();i++)
+		{
+			CustomEBook ebook=ebooks.get(i);
+			repository.delete(ebook);
+		}
+	}
 }

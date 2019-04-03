@@ -7,4 +7,5 @@ public interface EbookService {
 	List<CustomEBook> showContent(Buyer buyer);
 	void deleteChapter(int id);
 	int updateEbook(List<Integer>ebookid,List<Integer>sequence);
+	 void deleteContentAfterSave(Buyer buyer);
 }

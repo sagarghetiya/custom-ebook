@@ -68,8 +68,8 @@ public class CustomEBookApplicationTests {
 		Publisher publisher = list.get(0);
 		System.out.println(publisher);
 	}
-	@Test
-	public void Show()
+//	@Test
+	/*public void Show()
 	{
 		
 		EbookRepository repository = context.getBean(EbookRepository.class);
@@ -98,6 +98,6 @@ public class CustomEBookApplicationTests {
 		System.out.println("**********************");
 			}
 		
-	
+	*/
 
 }
