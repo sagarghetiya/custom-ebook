@@ -25,26 +25,33 @@
 			<th>Chapters Configured</th>
 		</tr>
 		<c:forEach items="${publisherBooks}" var="book">
-			
-				<tr>
-					<td>${book.isbn}</td>
-					<td><a href="confChapters?id=${book.id}">${book.bookName}</a></td>
-					<td>${book.price}</td>
-					<td>
-						<c:choose>
+
+			<tr>
+				<td>${book.isbn}</td>
+				<td><a
+					href=<c:choose>
 							<c:when test="${book.chaptersAdded==true}">
-						        Yes
+						        "reConfChapters?id=${book.id}"
 							</c:when>
 							<c:otherwise>
+						        "confChapters?id=${book.id}"
+							</c:otherwise>
+						</c:choose>>${book.bookName}</a></td>
+				<td>${book.price}</td>
+				<td><c:choose>
+						<c:when test="${book.chaptersAdded==true}">
+						        Yes
+							</c:when>
+						<c:otherwise>
 						        No*
 							</c:otherwise>
-						</c:choose>
-					</td>
-				</tr>
+					</c:choose></td>
+			</tr>
 		</c:forEach>
 	</table>
 
-	*Note - if you haven't configured your chapters, the book will only be available as a whole for sale
+	*Note - if you haven't configured your chapters, the book will only be
+	available as a whole for sale
 
 </body>
 </html>

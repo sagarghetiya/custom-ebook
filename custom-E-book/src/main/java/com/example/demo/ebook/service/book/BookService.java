@@ -10,7 +10,9 @@ import com.example.demo.ebook.model.publisher.Publisher;
 
 public interface BookService {
 	Book registerBook(Book book,Publisher publisher);
-	int saveBook(MultipartFile file, Book book, int publisherId) throws IOException;
+	String saveBook(MultipartFile file, Book book, int publisherId) throws IOException;
 	List<Book> getPublisherBooks(Publisher publisher);
 	Book getBookById(int id);
+	void update(Book book);
+	int getNoOfPages(String location) throws IOException;
 }

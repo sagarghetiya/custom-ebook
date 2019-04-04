@@ -48,6 +48,7 @@ public class ChapterServiceImpl implements ChapterService {
 		}
 		return 0;
 	}
+	
 
 	@Override
 	public String cutPdf(int startPage, int endPage, String source, String dest, boolean flag) throws IOException {
@@ -72,5 +73,18 @@ public class ChapterServiceImpl implements ChapterService {
 		}
 		sourceDocument.close();
 		return dest;
+	}
+
+
+	@Override
+	public List<Chapter> getChaptersByBook(Book book) {
+		List<Chapter> listOfChapters = repository.findByBookOrderById(book);
+		return listOfChapters;
+	}
+
+
+	@Override
+	public void saveChapter(Chapter chapter) {
+		repository.save(chapter);
 	}
 }

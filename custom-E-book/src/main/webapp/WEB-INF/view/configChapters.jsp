@@ -26,10 +26,18 @@
 //  					}
 //  				}
 			});
-			$("#start_img_"+id).load(location.href + " #start_img_"+id);
-			$("#start_img_"+id).show();
-			$("#end_img_"+id).load(location.href + " #end_img_"+id);
-			$("#end_img_"+id).show();
+			
+			var delayInMilliseconds = 7000; //1 second
+
+			setTimeout(function() {
+				$("#start_img_"+id).attr('src', "/images/temp/start_preview_"+id+".jpg")
+				$("#end_img_"+id).attr('src', "/images/temp/end_preview_"+id+".jpg")
+				$("#start_img_"+id).load(location.href + " #start_img_"+id);
+				$("#start_img_"+id).show();
+				$("#end_img_"+id).load(location.href + " #end_img_"+id);
+				$("#end_img_"+id).show();
+			}, delayInMilliseconds);
+			
 			
 // 			alert("id = "+id + " start page = "+startPage+" endPage = "+endPage);
 		});
@@ -38,7 +46,7 @@
 </head>
 <body>
 	<form action="saveChapters" method="post">
-			<input type="number" name="id" value="${book.id}" />
+			<input type="number" name="bookId" value="${book.id}" />
 			<input type="text" name="isbn" value="${book.isbn}"/>
 			<input type="text" name="bookName" value="${book.bookName}"/>
 			<input type="number" name="noOfChapters" value="${book.noOfChapters}"/>
@@ -60,8 +68,8 @@
 			<input type="number" min="1" max="${book.totalNoOfPages}"
 				name="end_page_${i}" id="end_page_${i}">
 			<br> <button type="button" id="${i}">preview</button> <br>
-			<img src="/images/temp/start_preview_${i}.jpg" hidden="true" id="start_img_${i}" height="100" width="75">
-			<img src="/images/temp/end_preview_${i}.jpg" hidden="true" id="end_img_${i}" height="100" width="75">
+			<img src="" hidden="true" id="start_img_${i}" height="200" width="150">
+			<img src="" hidden="true" id="end_img_${i}" height="200" width="150">
 			<br>
 			<br>
 		</c:forEach>
