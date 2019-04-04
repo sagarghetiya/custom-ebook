@@ -23,6 +23,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public Book registerBook(Book book,Publisher publisher) {
 		book.setPublisher(publisher);
+		book.setKeywords(book.getKeywords()+","+book.getBookName()+","+publisher.getName());
 		Book save = repository.save(book);
 		return save;
 	}

@@ -12,8 +12,13 @@ import com.example.demo.ebook.model.chapter.Chapter;
 @Service
 public interface ChapterService {
 	int saveChapters(ArrayList<String> names, ArrayList<String> keywords, ArrayList<String> Description,
-			ArrayList<Integer> price, ArrayList<Integer> startPage, ArrayList<Integer> endPage, Book book) throws IOException;
+			ArrayList<Integer> price, ArrayList<Integer> startPage, ArrayList<Integer> endPage, Book book)
+			throws IOException;
+
 	String cutPdf(int startPage, int endPage, String source, String dest, boolean flag) throws IOException;
+
 	List<Chapter> getChaptersByBook(Book book);
+
 	void saveChapter(Chapter chapter);
+
 }

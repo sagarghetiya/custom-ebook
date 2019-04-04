@@ -17,7 +17,7 @@
 	<a href="regBook">registerBook</a>
 	<br>
 	<br>
-	<table border="2">
+	<table border="1">
 		<tr>
 			<th>ISBN</th>
 			<th>book name</th>

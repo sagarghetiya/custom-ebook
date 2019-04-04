@@ -29,17 +29,24 @@ public class ChapterServiceImpl implements ChapterService {
 			throws IOException {
 		String sourceDocument = book.getBookLoc();
 		String chapLocation = sourceDocument.substring(0, sourceDocument.length() - 17) + "chap_";
+		String chapPreviewLocation = chapLocation;
 		System.out.println(sourceDocument);
 		System.out.println(chapLocation);
 		System.out.println(book.getNoOfChapters());
 		System.out.println(description.size());
 		for (int i = 0; i < book.getNoOfChapters(); i++) {
-			String loc = cutPdf(startPage.get(i), endPage.get(i), sourceDocument, chapLocation + (i + 1), false);
+			String loc = cutPdf(startPage.get(i), endPage.get(i), sourceDocument, chapLocation + (i + 1)+".pdf", false);
+			if(endPage.get(i)-startPage.get(i)<=2) {
+				cutPdf(startPage.get(i), endPage.get(i), sourceDocument, chapLocation + (i + 1)+"_preview.pdf", false);
+			}
+			else {
+				cutPdf(startPage.get(i), startPage.get(i)+2, sourceDocument, chapLocation + (i + 1)+"_preview.pdf", false);
+			}
 			Chapter chapter = new Chapter();
 			chapter.setBook(book);
 			chapter.setDescription(description.get(i));
 			chapter.setEndPage(endPage.get(i));
-			chapter.setKeywords(keywords.get(i));
+			chapter.setKeywords(keywords.get(i)+","+names.get(i)+","+book.getBookName()+","+book.getPublisher().getName());
 			chapter.setLoc(loc);
 			chapter.setName(names.get(i));
 			chapter.setPrice(price.get(i));
