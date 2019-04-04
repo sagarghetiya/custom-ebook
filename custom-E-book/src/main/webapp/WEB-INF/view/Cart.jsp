@@ -18,6 +18,11 @@
 	/*background-color: #f1f1f1;*/
 }
 
+body{
+  /* background-image:url("mybackground.jpg")*/
+   background-size:cover;
+   background-repeat:no-repeat;
+}
 .button {
   background-color: #FF6347; /* Green */
  border-radius: 8px;
@@ -59,7 +64,7 @@ function deletedata(id)
             
 </script>
 </head>
-<body >
+<body background="/images/book1.jpeg" >
 		<!-- Navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -78,13 +83,13 @@ function deletedata(id)
 		</div>
 	</nav>
 	<!---------- end ----------------->
-	${error} Chapter Content for Ebook
+	${error}
 	<div align="center">
 		<form action="/saveEbookContent" method="post">
 			
 		<article>
 			<div class="container">
-				<table  align="center" class="table table-striped">
+				<table  align="center" class="table ">
 					<caption>
 						<h3> E-book Content</h3>
 					</caption>
@@ -102,7 +107,19 @@ function deletedata(id)
 						<c:forEach items="${ebooks}" var="ebook">
 							<tr>
 								<td> <input	type="hidden" name="ebookid" value="${ebook.id}" />
-								<div class="card" style="background-color:#FFD700;">${ebook.book.bookName}</div>
+								<div class="card" style="background-color:#FFD700;">
+								<script>
+								var bookname="${ebook.book.bookName}";
+								var chaptername="${ebook.chapter.name}";
+								var bookfrmchapter="${ebook.chapter.book.bookName}";
+								 if(chaptername==="")
+									 document.write(bookname);
+								 else
+									document.write(bookfrmchapter);
+								
+								</script>
+								
+								</div>
 								</td>
 								<td><div class="card" id="chapter" style="background-color: #AFEEEE;" >
 								<script>
@@ -128,12 +145,12 @@ function deletedata(id)
 								
 								</script>
 								</div></td>
-								<td><div class="card" style="background-color:#98FB98; "  >
+								<td><div class="card"  style="background-color: #D3D3D3;">
 								<select name="sequence">
 										
 										<c:forEach begin="1" end="${size}" var="val">
 											
-											<option  style="background-color:#9ACD32;"value="${val}">${val}</option>
+											<option  value="${val}">${val}</option>
 											
 										</c:forEach>
 								</select>

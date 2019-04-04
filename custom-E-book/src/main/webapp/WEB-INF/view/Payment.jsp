@@ -11,8 +11,15 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Payment</title>
+<style>
+body{
+  /* background-image:url("mybackground.jpg")*/
+   background-size:cover;
+   background-repeat:no-repeat;
+}
+</style>
 </head>
-<body>
+<body >
 	<!-- Navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">

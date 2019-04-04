@@ -12,6 +12,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Buyer Home</title>
 <style>
+body{
+  /* background-image:url("mybackground.jpg")*/
+   background-size:cover;
+   background-repeat:no-repeat;
+}
 .button {
 	  background-color: #FF6347; /* Green */
 	 border-radius: 8px;
@@ -33,7 +38,7 @@
 	}
 </style>
 </head>
-<body>
+<body background="/images/book2.jpeg">
 	<!-- Navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
