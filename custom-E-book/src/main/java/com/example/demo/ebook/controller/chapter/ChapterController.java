@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ebook.model.book.Book;
+import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.service.chapter.ChapterService;
 
 @Controller
@@ -54,6 +55,19 @@ public class ChapterController {
 		System.out.println(chapEndPage);
 		service.saveChapters(chapNames, chapKeywords, chapDescription, chapPrice, chapStartPage, chapEndPage, book);
 		return "redirect:pubHome";
+	}
+	
+	@RequestMapping("previewBuyerChapter")
+	public String previewBuyerBook(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		if (session.getAttribute("buyer")==null) {
+			return "redirect:searchResult";
+		}
+		else {
+			Chapter chapter = service.getChapterById(id);
+			map.addAttribute("chapter", chapter);
+			return "previewBuyerChapter";
+		}
+		
 	}
 	
 }

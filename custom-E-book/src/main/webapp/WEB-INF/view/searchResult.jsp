@@ -11,7 +11,7 @@
 <body>
 	<form action="searchResult" method="post">
 		<pre>
-				keywords   : <input type="text" name="keywords" value="${keywords}"/>
+				keywords   : <input type="text" name="keywords" value="${keywords}" />
 			<input type="submit" name="search">
 		</pre>
 	</form>
@@ -26,7 +26,7 @@
 				<tr>
 					<td><input type="checkbox" name="bookIdList"
 						value="${book.id}"></td>
-					<td>${book.bookName}</td>
+					<td><a href="previewBuyerBook?id=${book.id}">${book.bookName}</a></td>
 					<td>${book.isbn}</td>
 				</tr>
 			</c:forEach>
@@ -41,7 +41,7 @@
 				<tr>
 					<td><input type="checkbox" name="chapterIdList"
 						value="${chapter.id}"></td>
-					<td>${chapter.name}</td>
+					<td><a href="previewBuyerChapter?id=${chapter.id}">${chapter.name}</a></td>
 					<td>${chapter.description}</td>
 				</tr>
 			</c:forEach>
