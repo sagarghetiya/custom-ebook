@@ -11,7 +11,7 @@
 	<h1>Congratulations, ${publisher.name} <br>your book - "${book.bookName}" has been uploaded </h1>
 	<br>
 	<br>
-	<a href="configureChapters">Finish your book registration by configuring its chapters</a>
+	<a href="confChapters?id=${book.id}">Finish your book registration by configuring its chapters</a>
 	
 </body>
 </html>
