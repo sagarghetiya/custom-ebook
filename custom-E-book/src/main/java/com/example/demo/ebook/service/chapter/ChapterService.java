@@ -20,5 +20,7 @@ public interface ChapterService {
 	List<Chapter> getChaptersByBook(Book book);
 
 	void saveChapter(Chapter chapter);
+	Chapter getChapterById(int id);
 
+	List<Chapter> getChapterByBookId(Book book);
 }

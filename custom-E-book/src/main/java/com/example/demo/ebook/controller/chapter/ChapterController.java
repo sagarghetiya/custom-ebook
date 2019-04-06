@@ -128,4 +128,18 @@ public class ChapterController {
 		return "redirect:pubHome";
 	}
 
+	
+	@RequestMapping("previewBuyerChapter")
+	public String previewBuyerBook(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		if (session.getAttribute("buyer")==null) {
+			return "redirect:searchResult";
+		}
+		else {
+			Chapter chapter = service.getChapterById(id);
+			map.addAttribute("chapter", chapter);
+			return "previewBuyerChapter";
+		}
+		
+	}
+	
 }
