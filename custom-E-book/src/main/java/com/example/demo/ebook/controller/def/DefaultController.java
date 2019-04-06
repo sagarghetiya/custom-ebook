@@ -1,5 +1,6 @@
 package com.example.demo.ebook.controller.def;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,8 @@ public class DefaultController {
 	}
 
 	@RequestMapping("loginBuyerPublisher")
-	public String loginBuyerPublisher(ModelMap map, HttpSession session) {
+	public String loginBuyerPublisher(ModelMap map, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
 		if (session.getAttribute("id") != null) {
 			if(session.getAttribute("publisher")!=null) {
 				return "redirect:pubHome";
@@ -52,14 +54,7 @@ public class DefaultController {
 //		return "Login";
 //	}
 
-	@RequestMapping("pubHome")
-	public String publisherHome(ModelMap map, HttpSession session) {
-		if (session.getAttribute("id") == null) {
-			return "redirect:loginBuyerPublisher";
-		} else {
-			return "publisherHome";
-		}
-	}
+	
 
 //	@RequestMapping("loginBuy")
 //	public String LoginBuyer(ModelMap map, HttpSession session) {
@@ -86,6 +81,10 @@ public class DefaultController {
 		} else {
 			return "regBook";
 		}
+	}
+	@RequestMapping("search")
+	public String search() {
+		return "search";
 	}
 
 }

@@ -1,17 +1,22 @@
 package com.example.demo.ebook.model.book;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import com.example.demo.ebook.model.publisher.Publisher; 
 
 @Entity
-public class Book {
+public class Book implements Serializable{
 
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(unique=true)
 	private String isbn;
 	private String bookName;
+	
+
 	@ManyToOne
 	private Publisher publisher;
 	private int noOfChapters;
@@ -19,7 +24,20 @@ public class Book {
 	private double price;
 	private String bookLoc;
 	private String keywords;
+
+	private boolean chaptersAdded;
+
+	private String description;
+
 	
+	public boolean isChaptersAdded() {
+		return chaptersAdded;
+	}
+
+	public void setChaptersAdded(boolean chaptersAdded) {
+		this.chaptersAdded = chaptersAdded;
+	}
+
 	public Book() {
 		
 	}
@@ -94,6 +112,14 @@ public class Book {
 
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
