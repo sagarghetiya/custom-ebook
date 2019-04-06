@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class BookController {
 		Book result = service.registerBook(book,publisher);
 		map.addAttribute("result", "book created with id "+result.getId());
 		service.saveBook(file, result, publisher.getId());
-		session.setAttribute("book",result);
+		map.addAttribute("book",result);
 		return "successBookRegistration";
 	}
 	
@@ -46,16 +47,26 @@ public class BookController {
 		} else {
 			Publisher publisher =(Publisher) session.getAttribute("publisher");
 			List<Book> publisherBooks = service.getPublisherBooks(publisher);
-			System.out.println(publisherBooks.get(0).getBookName());
+			//System.out.println(publisherBooks.get(0).getBookName());
 			map.addAttribute("publisherBooks", publisherBooks);
 			return "publisherHome";
 		}
 		
+		
 	}
 	@RequestMapping("confChapters")
 	public String confChapters(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		if (session.getAttribute("id") == null || session.getAttribute("publisher")==null) {
+			return "redirect:loginBuyerPublisher";
+		}
+		else {
+			Book book = service.getBookById(id);
+			System.out.println(book);
+			System.out.println(book.getBookName());
+			map.addAttribute("book", book);
+			return "configChapters";
+		}
 		
-		return "";
 	}
 
 }
