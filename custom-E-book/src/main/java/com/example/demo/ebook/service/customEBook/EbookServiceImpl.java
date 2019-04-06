@@ -1,10 +1,18 @@
 package com.example.demo.ebook.service.customEBook;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.fit.pdfdom.PDFDomTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -126,6 +134,20 @@ public class EbookServiceImpl implements EbookService{
 				ebook_repository.save(eBook);
 			}
 		}
+		return 0;
+	}
+	@Override
+	public int generateHTMLFromPDF(String filename) throws IOException {
+		PDDocument pdf = PDDocument.load(new File(filename));
+	    Writer output = new PrintWriter("src/output/pdf.html", "utf-8");
+	    try {
+			new PDFDomTree().writeText(pdf, output);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	     
+	    output.close();
 		return 0;
 	}
 
