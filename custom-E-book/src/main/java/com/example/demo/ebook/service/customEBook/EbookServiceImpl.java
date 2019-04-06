@@ -1,18 +1,33 @@
 package com.example.demo.ebook.service.customEBook;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.buyer.Buyer;
+import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
+import com.example.demo.ebook.repository.book.BookRepository;
+import com.example.demo.ebook.repository.chapter.ChapterRepository;
 import com.example.demo.ebook.repository.customEBook.EbookRepository;
 
 @Service
 public class EbookServiceImpl implements EbookService{
 	@Autowired
 	EbookRepository repository;
+	@Autowired
+	BookRepository book_repository;
+	@Autowired
+	ChapterRepository chap_repository;
+	@Autowired
+	EbookRepository ebook_repository;
+	// CustomEBook ebook;
+	// Chapter chapter;
 
 	@Override
 	public List<CustomEBook> showContent(Buyer buyer)
@@ -53,4 +68,73 @@ public class EbookServiceImpl implements EbookService{
 			repository.delete(ebook);
 		}
 	}
+	public List<Book> getBooks(String keywords) {
+		String[] keywordList = keywords.split(" ");
+		List<Book> books = new ArrayList<>();
+		Set<Book> books_set = new LinkedHashSet<>();
+		for (String keyword : keywordList) {
+			List<Book> books_temp = book_repository.findByKeywordsContaining(keyword);
+			if (books_temp != null)
+				books_set.addAll(books_temp);
+		}
+		books.addAll(books_set);
+		if (books.size() == 0)
+			return null;
+		else
+			return books;
+	}
+
+	@Override
+	public List<Chapter> getChapters(String keywords) {
+		String[] keywordList = keywords.split(" ");
+		List<Chapter> chapters = new ArrayList<>();
+		Set<Chapter> chapters_set = new LinkedHashSet<>();
+		for (String keyword : keywordList) {
+			List<Chapter> chapters_temp = chap_repository.findByKeywordsContaining(keyword);
+			if (chapters_temp != null)
+				chapters_set.addAll(chapters_temp);
+		}
+		chapters.addAll(chapters_set);
+		if (chapters.size() == 0)
+			return null;
+		else
+			return chapters;
+	}
+
+	@Override
+	public int saveEBook(List<Integer> books_id, List<Integer> chapters_id, Buyer buyer) {
+		int sequence = 1;
+		if (books_id != null) {
+			List<Book> books = book_repository.findByIdIn(books_id);
+			for (Book book : books) {
+				CustomEBook eBook = new CustomEBook();
+				eBook.setBuyer(buyer);
+				eBook.setBook(book);
+				eBook.setSequence(sequence);
+				sequence++;
+				ebook_repository.save(eBook);
+			}
+		}
+		if (chapters_id != null) {
+			List<Chapter> chapters = chap_repository.findByIdIn(chapters_id);
+			for (Chapter chapter : chapters) {
+				CustomEBook eBook = new CustomEBook();
+				eBook.setBuyer(buyer);
+				eBook.setChapter(chapter);
+				eBook.setSequence(sequence);
+				sequence++;
+				ebook_repository.save(eBook);
+			}
+		}
+		return 0;
+	}
+
+	/*
+	 * @Override public String customizeContent(Buyer
+	 * buyer,List<Chapter>chapters,int ebookid) {
+	 * 
+	 * 
+	 * return "ebook content updated"; }
+	 */
+
 }

@@ -1,15 +1,12 @@
 package com.example.demo.ebook.controller.book;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.ebook.model.book.Book;
+import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.publisher.Publisher;
 import com.example.demo.ebook.service.book.BookService;
+import com.example.demo.ebook.service.chapter.ChapterService;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	BookService service;
+	@Autowired
+	ChapterService chap_service;
 	
 	@RequestMapping(value = "/registerBook", method = RequestMethod.POST)
 	public String registerPublisher(@RequestParam("file") MultipartFile file, @ModelAttribute("book") Book book, ModelMap map,HttpSession session) throws IOException {
@@ -68,5 +69,21 @@ public class BookController {
 		}
 		
 	}
+	@RequestMapping("previewBuyerBook")
+	public String previewBuyerBook(@RequestParam("id") int id, ModelMap map, HttpSession session) {
+		if (session.getAttribute("buyer")==null) {
+			return "redirect:searchResult";
+		}
+		else {
+			Book book = service.getBookById(id);
+			List<Chapter> chapters = chap_service.getChapterByBookId(book);
+			map.addAttribute("book", book);
+			map.addAttribute("chapters", chapters);
+			return "previewBuyerBook";
+		}
+		
+	}
+	
+	
 
 }

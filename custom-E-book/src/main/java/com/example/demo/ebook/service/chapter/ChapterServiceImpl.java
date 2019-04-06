@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -93,5 +94,16 @@ public class ChapterServiceImpl implements ChapterService {
 	@Override
 	public void saveChapter(Chapter chapter) {
 		repository.save(chapter);
+	}
+	@Override
+	public Chapter getChapterById(int id) {
+		Optional<Chapter> chapter = repository.findById(id);
+		return chapter.get();
+	}
+
+	@Override
+	public List<Chapter> getChapterByBookId(Book book) {
+		List<Chapter> chapters = repository.findByBook(book);
+		return chapters;
 	}
 }
