@@ -13,5 +13,6 @@ public interface EbookService {
 	List<Book> getBooks(String keywords);
 	List<Chapter> getChapters(String keywords);
 	int saveEBook(List<Integer> books_id,List<Integer> chapters_id,Buyer buyer);
-	int generateHTMLFromPDF(String filename) throws IOException;
+	void generateHTMLFromPDF(String filename) throws IOException;
+	void mergePdf(Buyer buyer,boolean preview);
 }
