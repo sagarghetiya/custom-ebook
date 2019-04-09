@@ -34,13 +34,7 @@ public class DefaultController {
 
 	@RequestMapping("loginBuyerPublisher")
 	public String loginBuyerPublisher(ModelMap map, HttpServletRequest request) {
-		String temp_loc = System.getProperty("user.dir")+ "/src/main/resources/static/images/temp";
-		File index = new File(temp_loc);
-		String[]entries = index.list();
-		for(String s: entries){
-		    File currentFile = new File(index.getPath(),s);
-		    currentFile.delete();
-		}
+		
 		HttpSession session = request.getSession(false);
 		if (session.getAttribute("id") != null) {
 			if(session.getAttribute("publisher")!=null) {
@@ -50,6 +44,7 @@ public class DefaultController {
 				return "redirect:buyHome";
 			}
 		}
+		
 		map.addAttribute("error", "");
 		return "Login";
 	}

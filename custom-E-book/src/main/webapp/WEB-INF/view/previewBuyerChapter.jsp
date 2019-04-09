@@ -7,6 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script>
+//     function displayIframe() {
+//         document.getElementById("preview").innerHTML = 
+//         	"<iframe src=\"/images/temp/chapter_preview.pdf\" style=\"position : absolute;top: 0;right: 0;height: 100%;width: 50%;\"></iframe>";
+        	
+    $(document).ready(function(){
+    	var chapter_id = $("#chapter_id").val();
+    	var innerHtml = "<iframe src=\"getpdf1?id="+chapter_id+"\" style=\"position : absolute;top: 0;right: 0;height: 100%;width: 50%;\"></iframe>";
+    	$("#preview_button").click(function(){
+    		alert(innerHtml);
+    		$("#preview").html(innerHtml);
+    	});
+    	$("#preview").load(location.href + " #preview");
+    });
+</script>
+  
 <title>Insert title here</title>
 </head>
 <body>
@@ -36,15 +54,10 @@
     <li class="list-group-item"><b>Price:</b>${chapter.price}</li>
   </ul>
 </div>
- <button onclick="displayIframe()" style="margin-left: 20%">preview</button>
+ <button type="button" id="preview_button" style="margin-left: 20%">preview</button>
+ <input type="number" id="chapter_id" value="${chapter.id}" hidden="true">
 </div>
 </div>
-<script>
-    function displayIframe() {
-        document.getElementById("preview").innerHTML = 
-        	"<iframe src=\"/MT2018016.pdf\" style=\"position : absolute;top: 0;right: 0;height: 100%;width: 50%;\"></iframe>";
 
-    }
-</script>
 </body>
 </html>
