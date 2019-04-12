@@ -57,7 +57,7 @@ public class BuyerController {
 	@RequestMapping("/myOrders")
 	public String myOrders(ModelMap map,HttpSession session) {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		List<File> files_list = service.buyerMyOrders("/home/ankit/ebooks/publisher_2/book_13");
+		List<File> files_list = service.buyerMyOrders(buyer);
 		if(files_list!=null)
 			map.addAttribute("files_list", files_list);
 		return "myOrders";

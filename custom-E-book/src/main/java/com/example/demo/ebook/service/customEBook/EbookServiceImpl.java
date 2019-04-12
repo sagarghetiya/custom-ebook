@@ -265,6 +265,11 @@ public class EbookServiceImpl implements EbookService{
 			pageContent = "Book Name:"+book.getBookName()+"Description:"+book.getDescription();
 		}
 		String filepath = System.getProperty("user.home")+"/ebooks/temp/custom_page_"+i+".pdf";
+		File file = new File(filepath).getParentFile();
+		if(!file.isDirectory())
+		{
+			file.mkdirs();
+		}
 		PDDocument doc = new PDDocument();
         try {
             PDPage page = new PDPage();

@@ -40,7 +40,8 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public List<File> buyerMyOrders(String path) {
+	public List<File> buyerMyOrders(Buyer buyer) {
+		String path = System.getProperty("user.home")+"/ebooks/buyer_"+buyer.getId()+"/Books";
 		File[] files = new File(path).listFiles();
 		List<File> files_list = Arrays.asList(files);
 		System.out.println(files_list.get(0));
