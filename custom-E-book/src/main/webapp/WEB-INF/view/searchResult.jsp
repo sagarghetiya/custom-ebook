@@ -10,6 +10,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -64,8 +66,8 @@ form.example::after {
 			<i class="fa fa-search"></i>
 		</button>
 	</form>
-	<br/>
-	<br/>
+	<br />
+	<br />
 	<form action="addToCart" method="post">
 		<div class="container">
 			<button type="button" class="btn btn-info" data-toggle="collapse"
@@ -73,21 +75,39 @@ form.example::after {
 			<div id="book_collapse" class="collapse in">
 				<c:choose>
 					<c:when test="${not empty books}">
-						<table>
-							<tr>
-								<th>checkbox</th>
-								<th>book name</th>
-								<th>book isbn</th>
-							</tr>
-							<c:forEach items="${books}" var="book">
-								<tr>
-									<td><input type="checkbox" name="bookIdList"
-										value="${book.id}"></td>
-									<td><a href="previewBuyerBook?id=${book.id}">${book.bookName}</a></td>
-									<td>${book.isbn}</td>
-								</tr>
-							</c:forEach>
-						</table>
+						<article>
+							<div class="container">
+								<table class="table table-bordered">
+									<thead>
+									<tr>
+										<th></th>
+										<th>Book Name</th>
+										<th>Price</th>
+									</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${books}" var="book">
+											<tr>
+												<th scope="row">
+													<!-- Material unchecked -->
+													<div class="pretty p-default p-curve p-toggle">
+														<input type="checkbox" class="form-check-input"
+															name="bookIdList" value="${book.id}"> 
+														<div class="state p-success p-on"> <label>Selected</label>
+													</div>
+													<div class="state p-danger p-off">
+														<label>Not Selected</label>
+													</div>
+													</div>
+												</th>
+												<td><a href="previewBuyerBook?id=${book.id}">${book.bookName}</a></td>
+												<td>${book.price}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</article>
 					</c:when>
 					<c:otherwise>
 		No book found<br />
@@ -95,29 +115,41 @@ form.example::after {
 				</c:choose>
 			</div>
 		</div>
-		<br/>
-		<br/>
+		<br /> <br />
 		<div class="container">
 			<button type="button" class="btn btn-info" data-toggle="collapse"
 				data-target="#chapter_collapse" style="min-width: 30%">Chapter</button>
 			<div id="chapter_collapse" class="collapse in">
 				<c:choose>
 					<c:when test="${not empty chapters}">
-						<table>
-							<tr>
-								<th>checkbox</th>
-								<th>chapter name</th>
-								<th>chapter description</th>
-							</tr>
-							<c:forEach items="${chapters}" var="chapter">
-								<tr>
-									<td><input type="checkbox" name="chapterIdList"
-										value="${chapter.id}"></td>
-									<td><a href="previewBuyerChapter?id=${chapter.id}">${chapter.name}</a></td>
-									<td>${chapter.description}</td>
-								</tr>
-							</c:forEach>
-						</table>
+						<article>
+								<table class="table table-bordered">
+									<thead>
+									<tr>
+										<th></th>
+										<th>Chapter Name</th>
+										<th>Book Name</th>
+										<th>Price</th>
+									</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${chapters}" var="chapter">
+											<tr>
+												<th scope="row">
+													<!-- Material unchecked -->
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input"
+															name="chapterIdList" value="${chapter.id}">
+													</div>
+												</th>
+												<td><a href="previewBuyerChapter?id=${chapter.id}">${chapter.name}</a></td>
+												<td>${chapter.book.bookName}</td>
+												<td>${chapter.price}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+						</article>
 					</c:when>
 					<c:otherwise>
 						<br />
@@ -129,6 +161,7 @@ form.example::after {
 			</div>
 		</div>
 		<c:if test="${(not empty books) || (not empty chapters)}">
+		<br>
 			<input type="submit" value="Submit" style="margin-left: 20%" />
 		</c:if>
 	</form>
