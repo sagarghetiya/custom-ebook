@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
 import java.util.*;
 import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.book.Book;
@@ -63,12 +62,8 @@ public class EbookController {
 		List<Chapter> chapters = service.getChapters(keywords);
 		if (books != null)
 			map.addAttribute("books", books);
-//		else
-//			map.addAttribute("books", "");
 		if (chapters != null)
 			map.addAttribute("chapters", chapters);
-//		else
-//			map.addAttribute("chapters", "");
 		map.addAttribute("keywords", keywords);
 		return "searchResult";
 	}
@@ -155,23 +150,21 @@ public class EbookController {
 		if (buyer == null)
 			return "redirect:loginBuyerPublisher";
 		String filename="/home/samridhi/mid.pdf";
-//		try {
-//			service.generateHTMLFromPDF("/home/ankit/ebooks/publisher_2/book_13/complete_book.pdf");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		//List<CustomEBook> list=service.showContent(buyer);
 		SendEmail s=new SendEmail(price,filename);
 		service.deleteContentAfterSave(buyer);
 		map.addAttribute("result", "sent!");
 		return "successRegistration";
 	}
+
+	
+
+
 	@RequestMapping("/combinePdf")
 	public String combinePdf(HttpSession session)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		service.mergePdf(buyer,false);
+		service.mergePdf(buyer,true);
 		return "redirect:buyHome";
 	}
 }

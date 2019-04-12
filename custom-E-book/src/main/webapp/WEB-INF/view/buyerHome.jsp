@@ -16,7 +16,10 @@ body{
   /* background-image:url("mybackground.jpg")*/
    background-size:cover;
    background-repeat:no-repeat;
+<<<<<<< HEAD
+=======
    font-family: Arial;
+>>>>>>> branch 'ankit' of git@github.com:64jain/custom-ebook.git
 }
 .button {
 	  background-color: #FF6347; /* Green */
@@ -37,6 +40,8 @@ body{
 
 	  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 	}
+<<<<<<< HEAD
+=======
 	* {
   box-sizing: border-box;
 }
@@ -80,6 +85,7 @@ form.example button:hover {
 /*   clear: both; */
 /*   display: table; */
 /* } */
+>>>>>>> branch 'ankit' of git@github.com:64jain/custom-ebook.git
 </style>
 </head>
 <body background="/images/book2.jpeg">
