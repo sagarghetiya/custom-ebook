@@ -38,9 +38,12 @@ body{
 		</div>
 	</nav>
 	<!---------- end ----------------->
-<form action="/buy" method="POST">
-<p>Total price is:${price }</p>
-<input type="hidden" name ="price" value="${price}"/>
+<form action="/paymentPage" method="POST">
+<%-- <p>Total price is:${price }</p> --%>
+<%-- <input type="hidden" name ="price" value="${price}"/> --%>
+<input type="radio" name="price" value=${price} checked="checked"> SoftCopy for ${price}<br>
+<input type="radio" name="price" value=${hardCopyPrice}>Hard Copy for ${hardCopyPrice}<br>
+(Rs. 0.5/page and 30/- for shipping)<br>
 <input type="submit" value="Buy Now"/>
 </form>
 </body>

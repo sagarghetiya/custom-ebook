@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.service.customEBook.EbookService;
 import com.example.demo.ebook.service.customEBook.SendEmail;
+import com.mysql.cj.Session;
 
 @Controller
 public class EbookController {
@@ -58,6 +60,8 @@ public class EbookController {
 	 */
 	@RequestMapping(value = "/searchResult")
 	public String searchResult(@RequestParam("keywords") String keywords, ModelMap map) {
+		if(keywords=="")
+			return "buyHome";
 		List<Book> books = service.getBooks(keywords);
 		List<Chapter> chapters = service.getChapters(keywords);
 		if (books != null)
@@ -72,6 +76,8 @@ public class EbookController {
 	public String addToCart(@RequestParam(value = "bookIdList", required = false) List<Integer> bookIdList,
 			@RequestParam(value = "chapterIdList",required=false) List<Integer> chapterIdList, ModelMap map, HttpSession session) {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
+		if(buyer==null)
+			return "redirect:loginBuyerPublisher";
 		int save = service.saveEBook(bookIdList, chapterIdList, buyer);
 		return "redirect:showEbookContent";
 	}
@@ -130,15 +136,49 @@ public class EbookController {
 			return "redirect:loginBuyerPublisher";
 		List<CustomEBook> list=service.showContent(buyer);
 		double total=0;
+		@SuppressWarnings("unused")
+		int totalPages=0;
 		for(int i=0;i<list.size();i++)
 		{
 			if(list.get(i).getChapter()==null)
+			{
 				total+=list.get(i).getBook().getPrice();
+				totalPages+=list.get(i).getBook().getTotalNoOfPages();
+			}
 			else
+			{
 				total+=list.get(i).getChapter().getPrice();
+				totalPages+=(list.get(i).getChapter().getEndPage()-list.get(i).getChapter().getStartPage() +1);
+			}
 		}
+		double hardCopyPrice = total+totalPages*0.5 +30;
+		service.mergePdf(buyer, true);    //for creating ebook preview
 		map.addAttribute("price", total);
+		map.addAttribute("hardCopyPrice", hardCopyPrice);
 		return "Payment";
+	}
+	@RequestMapping("/paymentPage")
+	public String paymentPage(ModelMap map,HttpSession session,@RequestParam( value="price",required=false) String price,
+								@RequestParam(value="hardCopyPrice",required=false) String hardCopyPrice)
+	{
+		Buyer buyer = (Buyer) session.getAttribute("buyer");
+		if(buyer==null)
+			return "redirect:loginBuyerPublisher";
+		if(price!=null)
+			map.addAttribute("price",price);
+		else
+			map.addAttribute("price", hardCopyPrice);
+		return "paymentPage";
+	}
+	
+	@RequestMapping("/successPayment")
+	public String successPayment(HttpSession session)
+	{
+		Buyer buyer = (Buyer) session.getAttribute("buyer");
+		if(buyer==null)
+			return "redirect:loginBuyerPublisher";
+		service.mergePdf(buyer,false);
+		return "successPayment";
 	}
 	@RequestMapping(value ="/buy")
 	public String Buy(ModelMap map,HttpSession session,@RequestParam("price")String price)
