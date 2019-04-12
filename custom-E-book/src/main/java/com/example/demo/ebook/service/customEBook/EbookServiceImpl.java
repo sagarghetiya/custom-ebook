@@ -1,7 +1,5 @@
 package com.example.demo.ebook.service.customEBook;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,7 +31,6 @@ import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.repository.book.BookRepository;
 import com.example.demo.ebook.repository.chapter.ChapterRepository;
 import com.example.demo.ebook.repository.customEBook.EbookRepository;
-import com.mysql.cj.result.Field;
 
 @Service
 public class EbookServiceImpl implements EbookService{
@@ -280,10 +277,10 @@ public class EbookServiceImpl implements EbookService{
             PDPageContentStream contents = new PDPageContentStream(doc, page);
             contents.beginText();
             contents.setFont(font, 10);
-            contents.newLineAtOffset(50, 700);
+            contents.newLine();
             contents.showText(pageContent);
             contents.newLine();
-            contents.setFont(font, 20);
+            contents.setFont(font, 10);
             contents.showText("This is demo text");
             contents.endText();
             contents.close();
