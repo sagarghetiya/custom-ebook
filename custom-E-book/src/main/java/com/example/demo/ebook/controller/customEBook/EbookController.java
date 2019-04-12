@@ -56,7 +56,7 @@ public class EbookController {
 	 * map.addAttribute("result","custom ebook created with id "+result.getEbookId()
 	 * ); return "successRegistration"; }
 	 */
-	@RequestMapping(value = "/searchResult", method = RequestMethod.POST)
+	@RequestMapping(value = "/searchResult")
 	public String searchResult(@RequestParam("keywords") String keywords, ModelMap map) {
 		List<Book> books = service.getBooks(keywords);
 		List<Chapter> chapters = service.getChapters(keywords);
@@ -155,5 +155,16 @@ public class EbookController {
 		service.deleteContentAfterSave(buyer);
 		map.addAttribute("result", "sent!");
 		return "successRegistration";
+	}
+
+	
+
+
+	@RequestMapping("/combinePdf")
+	public String combinePdf(HttpSession session)
+	{
+		Buyer buyer = (Buyer) session.getAttribute("buyer");
+		service.mergePdf(buyer,false);
+		return "redirect:buyHome";
 	}
 }

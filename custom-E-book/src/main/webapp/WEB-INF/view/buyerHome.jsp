@@ -16,6 +16,10 @@ body{
   /* background-image:url("mybackground.jpg")*/
    background-size:cover;
    background-repeat:no-repeat;
+<<<<<<< HEAD
+=======
+   font-family: Arial;
+>>>>>>> branch 'ankit' of git@github.com:64jain/custom-ebook.git
 }
 .button {
 	  background-color: #FF6347; /* Green */
@@ -36,6 +40,52 @@ body{
 
 	  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 	}
+<<<<<<< HEAD
+=======
+	* {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+        font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+}
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* form.example::after { */
+/*   content: ""; */
+/*   clear: both; */
+/*   display: table; */
+/* } */
+>>>>>>> branch 'ankit' of git@github.com:64jain/custom-ebook.git
 </style>
 </head>
 <body background="/images/book2.jpeg">
@@ -61,4 +111,10 @@ ${result}
 	<h3>Hello,${buyer.name}</h3><br>
 	<button class="button button2" style="background-color: #CD853F;" onclick="location.href='/showEbookContent'">Go to Cart</button>
 </body>
+<form class="example" action="searchResult" style="margin: auto;max-width: 50%">
+		<input type="text" placeholder="Search.." name="keywords">
+		<button type="submit">
+			<i class="fa fa-search"></i>
+		</button>
+	</form>
 </html>
