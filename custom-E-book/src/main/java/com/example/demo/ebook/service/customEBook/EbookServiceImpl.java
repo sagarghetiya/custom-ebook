@@ -188,7 +188,10 @@ public class EbookServiceImpl implements EbookService{
 		{
 			buyerDirFile.mkdirs();
 		}
-		String destination = buyerDir +"/custom_book_"+noOfFiles+".pdf";
+		String destination = buyerDir +"/custom_book_"+noOfFiles+".pdf" ;
+		if(preview) {
+			destination = buyerDir +"/custom_book_preview.pdf";
+		}
 		String customPagePath=null;
 		List<CustomEBook> eBooks = ebook_repository.findByBuyerOrderBySequence(buyer);
 		PDFMergerUtility merger = new PDFMergerUtility();

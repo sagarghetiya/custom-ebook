@@ -164,7 +164,7 @@ public class EbookController {
 	public String combinePdf(HttpSession session)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		service.mergePdf(buyer,false);
+		service.mergePdf(buyer,true);
 		return "redirect:buyHome";
 	}
 }
