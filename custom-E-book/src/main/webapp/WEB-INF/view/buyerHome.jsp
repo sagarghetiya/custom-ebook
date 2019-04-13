@@ -16,10 +16,7 @@ body{
   /* background-image:url("mybackground.jpg")*/
    background-size:cover;
    background-repeat:no-repeat;
-<<<<<<< HEAD
-=======
    font-family: Arial;
->>>>>>> branch 'ankit' of git@github.com:64jain/custom-ebook.git
 }
 .button {
 	  background-color: #FF6347; /* Green */
@@ -110,6 +107,7 @@ form.example button:hover {
 ${result}
 	<h3>Hello,${buyer.name}</h3><br>
 	<button class="button button2" style="background-color: #CD853F;" onclick="location.href='/showEbookContent'">Go to Cart</button>
+	<button class="button button2" style="background-color: #CD853F;" onclick="location.href='/myOrders'">Orders</button>
 </body>
 <form class="example" action="searchResult" style="margin: auto;max-width: 50%">
 		<input type="text" placeholder="Search.." name="keywords">

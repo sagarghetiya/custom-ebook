@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="index" scope="page" value="1" />
 	<c:forEach items="${files_list}" var="file">
-	${file.getName()}<br/>
+		<a href="displayEbook?index=${index}" target="_blank">${file.getName()}</a>
+		<br />
+		<c:set var="index" scope="page" value="${index +1}" />
 	</c:forEach>
 </body>
 </html>
