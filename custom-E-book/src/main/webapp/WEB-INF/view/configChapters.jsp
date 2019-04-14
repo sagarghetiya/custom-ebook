@@ -45,6 +45,20 @@ body{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 </style>
 <script>
 	$(document).ready(function(){
@@ -165,12 +179,12 @@ body{
 					</div>
 					<div class="col-sm-6 card" style="background-color: lavenderblush;">
 						<input type="number" min="1" max="${book.totalNoOfPages}"
-				ame="end_page_${i}" id="end_page_${i}"
+				name="end_page_${i}" id="end_page_${i}"
 							style="font-size: 12pt; height: 40px; width: 280px;" />
 					</div>
 				</div> 
 				<br> <button type="button" id="${i}">preview</button> <br>
-				<span class="spinner-border" id="spin_${i}" ></span>
+				<div  class="loader" id="spin_${i}"></div>
 			<img src="" hidden="true" id="start_img_${i}" height="200" width="150">
 			<img src="" hidden="true" id="end_img_${i}" height="200" width="150">
 			<br>
