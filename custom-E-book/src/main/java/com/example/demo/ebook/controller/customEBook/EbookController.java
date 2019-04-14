@@ -24,7 +24,7 @@ import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.service.customEBook.EbookService;
 import com.example.demo.ebook.service.customEBook.SendEmail;
-import com.mysql.cj.Session;
+
 
 @Controller
 public class EbookController {
@@ -196,8 +196,6 @@ public class EbookController {
 		map.addAttribute("result", "sent!");
 		return "successRegistration";
 	}
-
-	
 
 
 	@RequestMapping("/combinePdf")
