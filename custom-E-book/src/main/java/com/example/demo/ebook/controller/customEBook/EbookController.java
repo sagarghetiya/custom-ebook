@@ -165,19 +165,33 @@ public class EbookController {
 		if(buyer==null)
 			return "redirect:loginBuyerPublisher";
 		if(price!=null)
+		{
 			map.addAttribute("price",price);
-		else
-			map.addAttribute("price", hardCopyPrice);
+			map.addAttribute("hardCopyPrice",hardCopyPrice);
+			System.out.println(hardCopyPrice);	
+			System.out.println(price);
+		}
+		
+		//map.addAttribute("hardCopyPrice",hardCopyPrice);
 		return "paymentPage";
 	}
 	
 	@RequestMapping("/successPayment")
-	public String successPayment(HttpSession session)
+	public String successPayment(HttpSession session,@RequestParam("price")String price,@RequestParam("addr")String addr,@RequestParam(value="copy_type",required=false)String copy_type,@RequestParam("paymentMethod")String paymentMethod)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
 		if(buyer==null)
 			return "redirect:loginBuyerPublisher";
+		int buyerid=buyer.getId();
+		System.out.println("********************************************************");
+		System.out.println(price);
+		System.out.println(addr);
+		System.out.println(copy_type);
+		System.out.println(paymentMethod);
+		System.out.println("********************************************************");
+		service.savePaymentContent(buyerid,price,addr,copy_type,paymentMethod);
 		service.mergePdf(buyer,false);
+		
 		return "successPayment";
 	}
 	@RequestMapping(value ="/buy")

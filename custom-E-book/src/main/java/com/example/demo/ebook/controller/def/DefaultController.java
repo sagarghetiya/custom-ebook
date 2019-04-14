@@ -16,7 +16,10 @@ public class DefaultController {
 	public String test() {
 		return "index";
 	}
-
+	@RequestMapping("/about")
+	public String about() {
+		return "about";
+	}
 //	@RequestMapping("regBuyer")
 //	public String regBuyer() {
 //		return "regBuyer";

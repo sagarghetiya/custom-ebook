@@ -18,7 +18,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 body {
-	font-family: Arial;
+
+   background-size:cover;
+   background-repeat:no-repeat;
 }
 
 * {
@@ -56,8 +58,30 @@ form.example::after {
 	display: table;
 }
 </style>
+
 </head>
-<body>
+<body background="/images/book1.jpeg">
+<!-- Navigation bar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/buyHome"> CustomEbooks </a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active">
+				<li><a href="/buyHome">Home</a></li>
+				<li><a href="/about">About</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li><a href="/showEbookContent"><span class="glyphicon glyphicon-shopping-cart"></span>
+						Cart</a></li>
+				<li><a href="/logoutBuyer"><span class="glyphicon glyphicon-log-out"></span>
+						Logout</a></li>
+						
+			</ul>
+		</div>
+	</nav>
+	<!---------- end ----------------->
 	<form class="example" action="searchResult"
 		style="margin: auto; max-width: 50%">
 		<input type="text" placeholder="Search.." name="keywords"
@@ -77,9 +101,9 @@ form.example::after {
 					<c:when test="${not empty books}">
 						<article>
 							<div class="container">
-								<table class="table table-bordered">
+								<table class="table" style="border-style: double;border-color: black;">
 									<thead>
-									<tr>
+									<tr >
 										<th></th>
 										<th>Book Name</th>
 										<th>Price</th>
@@ -118,12 +142,12 @@ form.example::after {
 		<br /> <br />
 		<div class="container">
 			<button type="button" class="btn btn-info" data-toggle="collapse"
-				data-target="#chapter_collapse" style="min-width: 30%">Chapter</button>
+				data-target="#chapter_collapse" style="min-width: 30%;"><b>Chapter</b></button>
 			<div id="chapter_collapse" class="collapse in">
 				<c:choose>
 					<c:when test="${not empty chapters}">
 						<article>
-								<table class="table table-bordered">
+								<table class="table "style="border-style: double;border-color: black;">
 									<thead>
 									<tr>
 										<th></th>
@@ -137,9 +161,14 @@ form.example::after {
 											<tr>
 												<th scope="row">
 													<!-- Material unchecked -->
-													<div class="form-check">
+													<div class="pretty p-default p-curve p-toggle">
 														<input type="checkbox" class="form-check-input"
-															name="chapterIdList" value="${chapter.id}">
+															name="chapterIdList" value="${chapter.id}"> 
+														<div class="state p-success p-on"> <label>Selected</label>
+													</div>
+													<div class="state p-danger p-off">
+														<label>Not Selected</label>
+													</div>
 													</div>
 												</th>
 												<td><a href="previewBuyerChapter?id=${chapter.id}">${chapter.name}</a></td>
@@ -162,7 +191,7 @@ form.example::after {
 		</div>
 		<c:if test="${(not empty books) || (not empty chapters)}">
 		<br>
-			<input type="submit" value="Submit" style="margin-left: 20%" />
+			<input class="btn btn-info"type="submit" value="Submit" style="margin-left: 50%;" />
 		</c:if>
 	</form>
 </body>

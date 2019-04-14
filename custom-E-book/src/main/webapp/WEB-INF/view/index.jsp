@@ -12,10 +12,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
-  
+ body{
+
+   background-size:cover;
+   background-repeat:no-repeat;
+}
   </style>
 </head>
-<body>
+<body background="/images/book_index.jpg">
 <div id="navigation" style="padding-bottom:-15px;">
 <!-- navbar area -->
 
@@ -39,26 +43,19 @@
 <!-- navbar area -->
 
 <!-- main body area -->
-<div id="image" style="background-image:url(/images/ebook3.jpg);height:550px;object-fit:cover;padding-top:-21px;margin-top:-21px;">
+<!-- <div id="image" style="background-image:url(/images/book_index.jpg);object-fit:cover;padding-top:-21px;margin-top:-21px;"> -->
 
-  </div>
+<!--   </div> -->
   
 <!-- main body area -->
 
 <!-- 
 <div id="middle" style="background-color:#A0522D; height:400px;">
 </div>middle text -->
-<!-- footer area -->
-<div style=" background-color:#000000;padding: 10px; text-align: center;color: red; height:120px;">
-			<div>
-			<h4><b>Contact Us At:</b></h4>
-            <p style="color:red;">
-            <br>
-            Phone No:+91 8239938927
-            <br>Landline:080 2377991
-            </p>
-            </div>
-</div>
+<!-- <!-- footer area -->
+<!-- <div style=" background-color:#000000;padding: 10px; text-align: center;color: red; height:120px;"> -->
+		
+<!-- </div> -->
 <!-- footer area -->
 <!-- <a href="/regBuyer">register Buyer</a> <br/> -->
 <!-- <a href="/regPublisher">register Publisher</a> <br/> -->

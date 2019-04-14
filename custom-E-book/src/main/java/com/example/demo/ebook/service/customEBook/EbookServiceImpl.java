@@ -28,9 +28,11 @@ import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.chapter.Chapter;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
+import com.example.demo.ebook.model.payment.Payment;
 import com.example.demo.ebook.repository.book.BookRepository;
 import com.example.demo.ebook.repository.chapter.ChapterRepository;
 import com.example.demo.ebook.repository.customEBook.EbookRepository;
+import com.example.demo.ebook.repository.payment.paymentRepository;
 
 @Service
 public class EbookServiceImpl implements EbookService{
@@ -42,6 +44,8 @@ public class EbookServiceImpl implements EbookService{
 	ChapterRepository chap_repository;
 	@Autowired
 	EbookRepository ebook_repository;
+	@Autowired
+	paymentRepository payment_repository;
 	// CustomEBook ebook;
 	// Chapter chapter;
 
@@ -84,6 +88,22 @@ public class EbookServiceImpl implements EbookService{
 			repository.delete(ebook);
 		}
 	}
+	
+	@Override
+	public void savePaymentContent(int buyerid,String price,String addr,String copy_type,String paymentMethod)
+	{
+		Payment payment=new Payment();
+		payment.setBuyerid(buyerid);
+		payment.setBuyer_addr(addr);
+		if(copy_type.equals("HardCopy"))
+			payment.setHardCopy(true);
+		else
+			payment.setHardCopy(false);
+		payment.setPrice(Double.parseDouble(price));
+		payment.setPayment_method(paymentMethod);
+		payment_repository.save(payment);
+	}
+	
 	public List<Book> getBooks(String keywords) {
 		String[] keywordList = keywords.split(" ");
 		List<Book> books = new ArrayList<>();
