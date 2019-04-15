@@ -20,6 +20,18 @@ body{
 }
 
 </style>
+
+ <script>
+        	
+    $(document).ready(function(){
+    	var chapter_id = $("#chapter_id").val();
+    	var innerHtml = "<iframe src=\"getpdf?id="+chapter_id+"\" style=\"position : absolute;top: 0;right: 0;height: 100%;width: 50%;\"></iframe>";
+    	$("#preview_button").click(function(){
+    		$("#preview").html(innerHtml);
+    	});
+    	$("#preview").load(location.href + " #preview");
+    });
+</script>
 </head>
 <body background="/images/grey_bg.jpg">
 
@@ -49,7 +61,6 @@ body{
 </div>
 <div id="content">
 <div class="container" style="width: 50%; margin-right:40%">
- 
   <h2><i>${book.bookName}</i></h2>
   <ul class="list-group" style="width: 70%; margin-right:40%">
     <li class="list-group-item"><b>Description:</b>${book.description}</li>
@@ -66,7 +77,7 @@ body{
   </ul>
 </div>
  <button type="button" class="btn btn-info" id="preview_button" style="margin-left: 20%">preview</button>
- <input type="number" id="chapter_id" value="${chapter.id}" hidden="true">
+ <input type="number" id="chapter_id" value="${book.id}" hidden="true">
 </div>
 </div>
 

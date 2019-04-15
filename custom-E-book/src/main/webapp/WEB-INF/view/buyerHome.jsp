@@ -106,7 +106,6 @@ form.example button:hover {
 		</div>
 	</nav>
 	<!---------- end ----------------->
-${result}
 
 	<h1 class="display-2" style="color: white;"><b>Hello,${buyer.name}</b></h1><br>
 <!-- 	<button class="button button2" style="background-color: #CD853F;" onclick="location.href='/showEbookContent'">Go to Cart</button> -->
