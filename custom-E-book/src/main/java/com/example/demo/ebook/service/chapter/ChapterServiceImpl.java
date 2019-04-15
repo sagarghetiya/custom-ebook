@@ -30,7 +30,7 @@ public class ChapterServiceImpl implements ChapterService {
 
 	@Override
 	public int saveChapters(ArrayList<String> names, ArrayList<String> keywords, ArrayList<String> description,
-			ArrayList<Integer> price, ArrayList<Integer> startPage, ArrayList<Integer> endPage, Book book)
+			ArrayList<Double> price, ArrayList<Integer> startPage, ArrayList<Integer> endPage, Book book)
 			throws IOException {
 		String sourceDocument = book.getBookLoc();
 		String chapLocation = sourceDocument.substring(0, sourceDocument.length() - 17) + "chap_";
