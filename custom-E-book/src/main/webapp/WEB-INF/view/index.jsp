@@ -17,10 +17,52 @@
    background-size:cover;
    background-repeat:no-repeat;
 }
+/* override position and transform in 3.3.x */
+.carousel-inner .item.left.active {
+  transform: translateX(-33%);
+}
+.carousel-inner .item.right.active {
+  transform: translateX(33%);
+}
+
+.carousel-inner .item.next {
+  transform: translateX(33%)
+}
+.carousel-inner .item.prev {
+  transform: translateX(-33%)
+}
+
+.carousel-inner .item.right,
+.carousel-inner .item.left { 
+  transform: translateX(0);
+}
+
+
+.carousel-control.left,.carousel-control.right {background-image:none;}
   </style>
+  <script>
+ $('#myCarousel').carousel({
+  interval: 10000
+})
+
+$('.carousel .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  if (next.next().length>0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+  }
+  else {
+  	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+  }
+});
+  </script>
 </head>
-<body background="/images/book_index.jpg">
-<div id="navigation" style="padding-bottom:-15px;">
+<body background="/images/index.jpeg" >
+<div id="navigation" >
 <!-- navbar area -->
 
 <nav class="navbar navbar-inverse">
@@ -40,6 +82,59 @@
    
 </nav>
 </div>
+<!------ corousel starting -------->
+<!-- <div class="container"> -->
+<!--   <h2><b>Custom E Books</b></h2> -->
+<!--   <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
+<!--     Indicators -->
+<!--     <ol class="carousel-indicators"> -->
+<!--       <li data-target="#myCarousel" data-slide-to="0" class="active"></li> -->
+<!--       <li data-target="#myCarousel" data-slide-to="1"></li> -->
+<!--       <li data-target="#myCarousel" data-slide-to="2"></li> -->
+<!--     </ol> -->
+
+<!--     Wrapper for slides -->
+<!--     <div class="carousel-inner"> -->
+
+<!--       <div class="item active"> -->
+<!--         <img src="/images/book10.jpg" alt="Los Angeles" style="width:100%;height:80%;"> -->
+<!--         <div class="carousel-caption"> -->
+<!--           <h3>Los Angeles</h3> -->
+<!--           <p>LA is always so much fun!</p> -->
+<!--         </div> -->
+<!--       </div> -->
+
+<!--       <div class="item"> -->
+<!--         <img src="/images/book11.jpg" alt="Chicago" style="width:100%;height:80%;"> -->
+<!--         <div class="carousel-caption"> -->
+<!--           <h3>Chicago</h3> -->
+<!--           <p>Thank you, Chicago!</p> -->
+<!--         </div> -->
+<!--       </div> -->
+    
+<!--       <div class="item"> -->
+<!--         <img src="/images/book16.jpg" alt="New York" style="width:100%;height:80%;"> -->
+<!--         <div class="carousel-caption"> -->
+<!--           <h3>New York</h3> -->
+<!--           <p>We love the Big Apple!</p> -->
+<!--         </div> -->
+<!--       </div> -->
+  
+<!--     </div> -->
+
+<!--     Left and right controls -->
+<!--     <a class="left carousel-control" href="#myCarousel" data-slide="prev"> -->
+<!--       <span class="glyphicon glyphicon-chevron-left"></span> -->
+<!--       <span class="sr-only">Previous</span> -->
+<!--     </a> -->
+<!--     <a class="right carousel-control" href="#myCarousel" data-slide="next"> -->
+<!--       <span class="glyphicon glyphicon-chevron-right"></span> -->
+<!--       <span class="sr-only">Next</span> -->
+<!--     </a> -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!------ corousel ending -------->
 <!-- navbar area -->
 
 <!-- main body area -->
@@ -59,6 +154,33 @@
 <!-- footer area -->
 <!-- <a href="/regBuyer">register Buyer</a> <br/> -->
 <!-- <a href="/regPublisher">register Publisher</a> <br/> -->
-
+<div class="container">
+<div class="col-md-6 col-md-offset-3">
+<div class="carousel slide" id="myCarousel">
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/angelsdemons.jpg" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/harrypotter1.jpg" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/lifeofpi.jpg" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/davinci.jpg" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/pinnochio.jpg" class="img-responsive"></a></div>
+    </div>
+    <div class="item">
+      <div class="col-md-4"><a href="#"><img src="/images/bookcover/twilight.jpg" class="img-responsive"></a></div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>
+</div>
 </body>
 </html>

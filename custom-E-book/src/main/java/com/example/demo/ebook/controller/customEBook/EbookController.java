@@ -171,45 +171,50 @@ public class EbookController {
 			System.out.println(hardCopyPrice);	
 			System.out.println(price);
 		}
-		
+		map.addAttribute(buyer);
 		//map.addAttribute("hardCopyPrice",hardCopyPrice);
 		return "paymentPage";
 	}
 	
 	@RequestMapping("/successPayment")
-	public String successPayment(HttpSession session,@RequestParam("price")String price,@RequestParam("addr")String addr,@RequestParam(value="copy_type",required=false)String copy_type,@RequestParam("paymentMethod")String paymentMethod)
+	public String successPayment(ModelMap map,HttpSession session,@RequestParam("name") String name,@RequestParam("email")String email,@RequestParam("price")String price,@RequestParam("addr")String addr,@RequestParam(value="copy_type",required=false)String copy_type,@RequestParam("paymentMethod")String paymentMethod)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
 		if(buyer==null)
 			return "redirect:loginBuyerPublisher";
-		int buyerid=buyer.getId();
+		
 		System.out.println("********************************************************");
+		System.out.println(email);
+		System.out.println(name);
 		System.out.println(price);
 		System.out.println(addr);
 		System.out.println(copy_type);
 		System.out.println(paymentMethod);
 		System.out.println("********************************************************");
-		service.savePaymentContent(buyerid,price,addr,copy_type,paymentMethod);
+		service.savePaymentContent(name,email,buyer,price,addr,copy_type,paymentMethod);
 		service.mergePdf(buyer,false);
-		
+		//String filename="/home/samridhi/mid.pdf";
+		//SendEmail s=new SendEmail(price,filename);
+		service.deleteContentAfterSave(buyer);
+		map.addAttribute("result", "Email has been sent to the recipient email address!");
 		return "successPayment";
 	}
-	@RequestMapping(value ="/buy")
-	public String Buy(ModelMap map,HttpSession session,@RequestParam("price")String price)
-	{
-		if (session.getAttribute("id") == null) {
-			return "redirect:loginBuyerPublisher";
-		}
-		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		if (buyer == null)
-			return "redirect:loginBuyerPublisher";
-		String filename="/home/samridhi/mid.pdf";
-		//List<CustomEBook> list=service.showContent(buyer);
-		SendEmail s=new SendEmail(price,filename);
-		service.deleteContentAfterSave(buyer);
-		map.addAttribute("result", "sent!");
-		return "successRegistration";
-	}
+//	@RequestMapping(value ="/buy")
+//	public String Buy(ModelMap map,HttpSession session,@RequestParam("price")String price)
+//	{
+//		if (session.getAttribute("id") == null) {
+//			return "redirect:loginBuyerPublisher";
+//		}
+//		Buyer buyer = (Buyer) session.getAttribute("buyer");
+//		if (buyer == null)
+//			return "redirect:loginBuyerPublisher";
+//		String filename="/home/samridhi/mid.pdf";
+//		//List<CustomEBook> list=service.showContent(buyer);
+//		SendEmail s=new SendEmail(price,filename);
+//		service.deleteContentAfterSave(buyer);
+//		map.addAttribute("result", "Email has been sent to the recipient email address!");
+//		return "successRegistration";
+//	}
 
 
 	@RequestMapping("/combinePdf")

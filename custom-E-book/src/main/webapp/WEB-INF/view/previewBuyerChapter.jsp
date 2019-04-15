@@ -24,10 +24,38 @@
     	$("#preview").load(location.href + " #preview");
     });
 </script>
-  
-<title>Insert title here</title>
+ <style>
+body{
+  /* background-image:url("mybackground.jpg")*/
+   background-size:cover;
+   background-repeat:no-repeat;
+}
+
+</style> 
+<title>${chapter.name }</title>
 </head>
-<body>
+<body  background="/images/grey_bg.jpg">
+<!-- Navigation bar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/buyHome"> CustomEbooks </a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active">
+				<li><a href="/buyHome">Home</a></li>
+				<li><a href="/about">About</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+			<li><a href="/showEbookContent"><span class="glyphicon glyphicon-shopping-cart"></span>
+						Cart</a></li>
+				<li><a href="/logoutBuyer"><span class="glyphicon glyphicon-log-out"></span>
+						Logout</a></li>
+						
+			</ul>
+		</div>
+	</nav>
+	<!---------- end ----------------->
 <!-- 	<form action="searchResult" method="post"> -->
 <%-- 			<input type="number" name="id" value="${book.id}" readonly/> --%>
 <%-- 			<input type="text" name="isbn" value="${book.isbn}"/> --%>
@@ -41,20 +69,18 @@
 <!-- 	</form> -->
 <div id="complete">
 <div id="preview" style="margin-left: 50%">
-<!-- 	<iframe src="/MT2018016.pdf" style="position : absolute;top: 0;right: 0;height: 100%;width: 50%;"> -->
-<!-- 	</iframe> -->
 </div>
 <div id="content">
 <div class="container" style="width: 50%; margin-right:40%">
-  <h2>${chapter.name}</h2>
+  <h2><i>${chapter.name}</i></h2>
   <ul class="list-group" style="width: 70%; margin-right:40%">
     <li class="list-group-item"><b>Description:</b>${chapter.description}</li>
-    <li class="list-group-item"><b>Refernced from book:</b><a href="previewBuyerBook?id=${chapter.book.id}">${chapter.book.bookName}</a></li>
+    <li class="list-group-item"><b>Referenced from book:</b><a href="previewBuyerBook?id=${chapter.book.id}">${chapter.book.bookName}</a></li>
     <li class="list-group-item"><b>Author:</b>${chapter.book.publisher.name}</li>
     <li class="list-group-item"><b>Price:</b>${chapter.price}</li>
   </ul>
 </div>
- <button type="button" id="preview_button" style="margin-left: 20%">preview</button>
+ <button type="button" class="btn btn-info" id="preview_button" style="margin-left: 20%">preview</button>
  <input type="number" id="chapter_id" value="${chapter.id}" hidden="true">
 </div>
 </div>

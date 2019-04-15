@@ -90,10 +90,12 @@ public class EbookServiceImpl implements EbookService{
 	}
 	
 	@Override
-	public void savePaymentContent(int buyerid,String price,String addr,String copy_type,String paymentMethod)
+	public void savePaymentContent(String name,String email,Buyer buyer,String price,String addr,String copy_type,String paymentMethod)
 	{
 		Payment payment=new Payment();
-		payment.setBuyerid(buyerid);
+		payment.setName(name);
+		payment.setEmail(email);
+		payment.setBuyer(buyer);
 		payment.setBuyer_addr(addr);
 		if(copy_type.equals("HardCopy"))
 			payment.setHardCopy(true);

@@ -17,6 +17,8 @@ body{
    background-size:cover;
    background-repeat:no-repeat;
 }
+
+
 </style>
 </head>
 <body >
@@ -47,10 +49,11 @@ body{
 <form action="/paymentPage" method="POST">
 <%-- <p>Total price is:${price }</p> --%>
 <%-- <input type="hidden" name ="price" value="${price}"/> --%>
-<input type="radio" name="price" value=${price} checked="checked"> SoftCopy for ${price}<br>
-<input type="radio" name="price" value=${hardCopyPrice}>Hard Copy for ${hardCopyPrice}<br>
+<input type="radio" name="price" value=${price} checked="checked"> <font size="5" ><b>SoftCopy for ${price}</b></font><br>
+<input type="radio" name="price" value=${hardCopyPrice}><font size="5" ><b>Hard Copy for ${hardCopyPrice}</b></font><br>
 <input type="hidden" name="hardCopyPrice" value="${ hardCopyPrice}"/>
-(Rs. 0.5/page and 30/- for shipping)<br>
+
+<i>(Rs. 0.5/page and 30/- for shipping)</i><br>
 <input  class="btn btn-info" type="submit" value="Buy Now"/>
 </form>
 </body>

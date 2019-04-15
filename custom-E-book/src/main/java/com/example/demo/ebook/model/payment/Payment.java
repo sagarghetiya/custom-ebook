@@ -1,12 +1,20 @@
 package com.example.demo.ebook.model.payment;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.example.demo.ebook.model.buyer.Buyer;
 @Entity
 public class Payment {
 	@Id
 	@GeneratedValue
 	private int id;
+	private String name;
+	private String email;
 	private String buyer_addr;
-	private int buyerid;
+	@ManyToOne
+	private Buyer buyer;
 	private boolean hardCopy;
 	private double price;
 	private String payment_method;
@@ -23,13 +31,26 @@ public class Payment {
 	public void setBuyer_addr(String buyer_addr) {
 		this.buyer_addr = buyer_addr;
 	}
-	public int getBuyerid() {
-		return buyerid;
+	
+	public String getName() {
+		return name;
 	}
-	public void setBuyerid(int buyerid) {
-		this.buyerid = buyerid;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Buyer getBuyer() {
+		return buyer;
+	}
+	public void setBuyer(Buyer buyer) {
+		this.buyer = buyer;
+	}
 	public boolean isHardCopy() {
 		return hardCopy;
 	}
@@ -47,6 +68,11 @@ public class Payment {
 	}
 	public void setPayment_method(String payment_method) {
 		this.payment_method = payment_method;
+	}
+	@Override
+	public String toString() {
+		return "Payment [id=" + id + ", name=" + name + ", email=" + email + ", buyer_addr=" + buyer_addr + ", buyer="
+				+ buyer + ", hardCopy=" + hardCopy + ", price=" + price + ", payment_method=" + payment_method + "]";
 	}
 	
 	
