@@ -18,7 +18,6 @@
     	var chapter_id = $("#chapter_id").val();
     	var innerHtml = "<iframe src=\"getpdf1?id="+chapter_id+"\" style=\"position : absolute;top: 0;right: 0;height: 100%;width: 50%;\"></iframe>";
     	$("#preview_button").click(function(){
-    		alert(innerHtml);
     		$("#preview").html(innerHtml);
     	});
     	$("#preview").load(location.href + " #preview");

@@ -82,11 +82,12 @@ form.example button:hover {
 </style>
 </head>
 <body background="/images/book_index.jpg">
+	
 	<!-- Navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/buyHome">CustomEbooks</a>
+				<a class="navbar-brand" href="/buyHome"> CustomEbooks </a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active">
@@ -94,6 +95,8 @@ form.example button:hover {
 				<li><a href="/about">About</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+			<li><a href="/myOrders"><span class="glyphicon glyphicon-list-alt"></span>
+						My Orders</a></li>
 			<li><a href="/showEbookContent"><span class="glyphicon glyphicon-shopping-cart"></span>
 						Cart</a></li>
 				<li><a href="/logoutBuyer"><span class="glyphicon glyphicon-log-out"></span>
@@ -103,7 +106,6 @@ form.example button:hover {
 		</div>
 	</nav>
 	<!---------- end ----------------->
-${result}
 
 	<h1 class="display-2" style="color: white;"><b>Hello,${buyer.name}</b></h1><br>
 <!-- 	<button class="button button2" style="background-color: #CD853F;" onclick="location.href='/showEbookContent'">Go to Cart</button> -->
