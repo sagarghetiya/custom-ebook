@@ -16,6 +16,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="/js/search2.js"></script>
 <style>
 body {
 
@@ -101,6 +102,7 @@ form.example::after {
 					<c:when test="${not empty books}">
 						<article>
 							<div class="container">
+<!-- 							<input type="text" id="search2" placeholder="Type to search"> -->
 								<table class="table" style="border-style: double;border-color: black;">
 									<thead>
 									<tr >

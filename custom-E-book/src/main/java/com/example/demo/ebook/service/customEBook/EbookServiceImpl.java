@@ -186,7 +186,7 @@ public class EbookServiceImpl implements EbookService{
 //        pdf.saveToFile("/home/ankit/ToHTML.html", FileFormat.HTML);
 	}
 	@Override
-	public void mergePdf(Buyer buyer,boolean preview) {
+	public void mergePdf(Buyer buyer,boolean preview,String title) {
 		// TODO Auto-generated method stub
 		String homeDir = System.getProperty("user.home");
 		System.out.println(homeDir);
@@ -210,7 +210,12 @@ public class EbookServiceImpl implements EbookService{
 		{
 			buyerDirFile.mkdirs();
 		}
-		String destination = buyerDir +"/custom_book_"+noOfFiles+".pdf" ;
+		//String destination = buyerDir +"/custom_book_"+noOfFiles+".pdf" ;
+		if(title.equals(""))
+		{
+			title = "new_book_"+noOfFiles;
+		}
+		String destination = buyerDir + "/"+ title+".pdf";
 		if(preview) {
 			destination = buyerDir +"/custom_book_preview.pdf";
 		}
