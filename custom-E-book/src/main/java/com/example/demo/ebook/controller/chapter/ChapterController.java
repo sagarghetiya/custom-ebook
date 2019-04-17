@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.chapter.Chapter;
@@ -163,6 +164,11 @@ public class ChapterController {
 			return "previewBuyerChapter";
 		}
 		
+	}
+	@RequestMapping("csvUpload")
+	public String csvUpload(@RequestParam("file") MultipartFile file) {
+		
+		return "responseCsv";
 	}
 	
 }

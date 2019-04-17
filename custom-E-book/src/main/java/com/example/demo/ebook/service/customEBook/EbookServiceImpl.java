@@ -141,15 +141,15 @@ public class EbookServiceImpl implements EbookService{
 
 	@Override
 	public int saveEBook(List<Integer> books_id, List<Integer> chapters_id, Buyer buyer) {
-		int sequence = 1;
+		int sequence = (int) ebook_repository.countByBuyer(buyer);
 		if (books_id != null) {
 			List<Book> books = book_repository.findByIdIn(books_id);
 			for (Book book : books) {
 				CustomEBook eBook = new CustomEBook();
 				eBook.setBuyer(buyer);
 				eBook.setBook(book);
-				eBook.setSequence(sequence);
 				sequence++;
+				eBook.setSequence(sequence);
 				ebook_repository.save(eBook);
 			}
 		}

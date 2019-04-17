@@ -44,7 +44,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -89,11 +89,11 @@
 			<version>1.4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
-			<dependency>
-			    <groupId>javax.activation</groupId>
-			    <artifactId>activation</artifactId>
-			    <version>1.1.1</version>
-			</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
@@ -138,9 +138,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.5</version>
+		</dependency>
 	</dependencies>
-		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-		
+	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+
 	<build>
 		<plugins>
 			<plugin>
