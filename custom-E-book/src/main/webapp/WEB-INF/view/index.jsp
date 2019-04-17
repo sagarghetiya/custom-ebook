@@ -154,27 +154,28 @@ $('.carousel .item').each(function(){
 <!-- footer area -->
 <!-- <a href="/regBuyer">register Buyer</a> <br/> -->
 <!-- <a href="/regPublisher">register Publisher</a> <br/> -->
+ <h2 style="color:white;"><b>Custom E Books</b></h2> 
 <div class="container">
 <div class="col-md-6 col-md-offset-3">
 <div class="carousel slide" id="myCarousel">
   <div class="carousel-inner">
     <div class="item active">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/angelsdemons.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/angelsdemons.jpg" class="img-responsive"></a></div>
     </div>
     <div class="item">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/harrypotter1.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/harrypotter1.jpg" class="img-responsive"></a></div>
     </div>
     <div class="item">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/lifeofpi.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/lifeofpi.jpg" class="img-responsive"></a></div>
     </div>
     <div class="item">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/davinci.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/davinci.jpg" class="img-responsive"></a></div>
     </div>
     <div class="item">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/pinnochio.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/pinnochio.jpg" class="img-responsive"></a></div>
     </div>
     <div class="item">
-      <div class="col-md-4"><a href="#"><img src="/images/bookcover/twilight.jpg" class="img-responsive"></a></div>
+      <div class="col-md-5"><a href="#"><img src="/images/bookcover/twilight.jpg" class="img-responsive"></a></div>
     </div>
   </div>
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
@@ -182,5 +183,9 @@ $('.carousel .item').each(function(){
 </div>
 </div>
 </div>
+
+
+
+
 </body>
 </html>
