@@ -44,7 +44,6 @@ public class BuyerServiceImpl implements BuyerService {
 		String path = System.getProperty("user.home")+"/ebooks/buyer_"+buyer.getId()+"/Books";
 		File[] files = new File(path).listFiles();
 		List<File> files_list = Arrays.asList(files);
-		System.out.println(files_list.get(0));
 		return files_list;
 	}
 }

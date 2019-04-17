@@ -90,11 +90,11 @@ body{
   </div>
     <div class="row">
     <div class="col-sm-4 card" style="background-color:lavender;"><b>DESCRIPTION</b></div>
-    <div class="col-sm-6 card" style="background-color:lavenderblush;"><input type="text" name="description" style="font-size: 18pt; height: 40px; width:280px; " /></div>
+    <div class="col-sm-6 card" style="background-color:lavenderblush;"><textarea name="description" rows="4" cols="30" style="font-size: 18pt; width:280px; "></textarea></div>
   </div>
    <div class="row">
     <div class="col-sm-4 card" style="background-color:lavender;"><b>UPLOAD YOUR BOOK</b></div>
-    <div class="col-sm-6 card" style="background-color:lavenderblush;"> <input type="file" name="file" style="font-size: 14pt; height: 40px; width:280px; "/></div>
+    <div class="col-sm-6 card" style="background-color:lavenderblush;"> <input type="file" name="file" accept=".pdf" style="font-size: 14pt; height: 40px; width:280px; "/></div>
   </div>
  
   <input type="submit" class="button button2" name="register">

@@ -2,11 +2,16 @@ package com.example.demo.ebook.controller.book;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -90,6 +95,23 @@ public class BookController {
 			return "previewBuyerBook";
 		}
 		
+	}
+	
+	@RequestMapping(value="/getpdf", method=RequestMethod.GET)
+	public ResponseEntity<byte[]> getPDF1(@RequestParam("id") int id ) throws IOException {
+
+		Book book = service.getBookById(id);
+	    HttpHeaders headers = new HttpHeaders();
+
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    String filename = book.getBookLoc().substring(0, book.getBookLoc().length()-4)+"_preview.pdf";
+	    File file = new File(filename);
+	    byte[] pdf1Bytes = Files.readAllBytes(file.toPath());
+	    headers.add("content-disposition", "inline;filename=" + filename);
+
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes, headers, HttpStatus.OK);
+	    return response;
 	}
 	
 	

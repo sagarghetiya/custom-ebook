@@ -64,6 +64,7 @@ body{
 	$(document).ready(function(){
 		$(":button").click(function() {
 			var id = $(this).attr('id');
+			$("#spin_"+id).show();
 			var startPage = $("#start_page_"+id).val();
 			var endPage = $("#end_page_"+id).val();
 			var totalPages = $("#totalNoOfPages").val();
@@ -80,7 +81,7 @@ body{
 //  				}
 			});
 			$("#spin_"+id).show();
-			var delayInMilliseconds = 7000; //1 second
+			var delayInMilliseconds = 9000; //1 second
 
 			setTimeout(function() {
 				$("#start_img_"+id).attr('src', "/images/temp/start_preview_"+id+".jpg")
@@ -89,8 +90,9 @@ body{
 				$("#start_img_"+id).show();
 				$("#end_img_"+id).load(location.href + " #end_img_"+id);
 				$("#end_img_"+id).show();
+				$("#spin_"+id).hide();
 			}, delayInMilliseconds);
-			$("#spin_"+id).hide();
+			
 			
 // 			alert("id = "+id + " start page = "+startPage+" endPage = "+endPage);
 		});
@@ -184,26 +186,10 @@ body{
 					</div>
 				</div> 
 				<br> <button type="button" id="${i}">preview</button> <br>
-				<div  class="loader" id="spin_${i}"></div>
+				<div  class="loader" id="spin_${i}" hidden="true"></div>
 			<img src="" hidden="true" id="start_img_${i}" height="200" width="150">
 			<img src="" hidden="true" id="end_img_${i}" height="200" width="150">
 			<br>
-		
-				<!-- <br><label for="name_${i}"> Name of the chapter</label><input type="text" name="name_${i}">
-			<br><label for="price_${i}"> Price</label><input type="number" name="price_${i}" min="0">
-			<br><label for="description_${i}"> Description of the chapter</label> <br><textarea rows="4" cols="50" name="description_${i}"></textarea>
-			<br><label for="keywords_${i}"> Keywords (space separated)</label> <input type="text" name="keywords_${i}">
-			<label for="start_page_${i}">Start page</label>
-			<input type="number" min="1" max="${book.totalNoOfPages}"
-				name="start_page_${i}" id="start_page_${i}">
-			
-			<label for="end_page_${i}">End page</label>
-			<input type="number" min="1" max="${book.totalNoOfPages}"
-				name="end_page_${i}" id="end_page_${i}">
-			<br> <button type="button" id="${i}">preview</button> <br>
-			<img src="" hidden="true" id="start_img_${i}" height="200" width="150">
-			<img src="" hidden="true" id="end_img_${i}" height="200" width="150">
-			<br>  -->
 			<br>
 			
 			</div>
