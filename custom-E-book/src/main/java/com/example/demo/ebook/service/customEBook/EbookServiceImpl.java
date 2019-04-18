@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -92,7 +93,7 @@ public class EbookServiceImpl implements EbookService {
 
 	@Override
 	public void savePaymentContent(String name, String email, Buyer buyer, String price, String addr, String copy_type,
-			String paymentMethod) {
+			String paymentMethod,String title) {
 		Payment payment = new Payment();
 		payment.setName(name);
 		payment.setEmail(email);
@@ -104,6 +105,10 @@ public class EbookServiceImpl implements EbookService {
 			payment.setHardCopy(false);
 		payment.setPrice(Double.parseDouble(price));
 		payment.setPayment_method(paymentMethod);
+		long millis=System.currentTimeMillis();  
+		Date date=new Date(millis);  
+		payment.setPurchaseDate(date);
+		payment.setTitle(title);
 		payment_repository.save(payment);
 	}
 
@@ -343,6 +348,7 @@ public class EbookServiceImpl implements EbookService {
 			PDPageContentStream contents = new PDPageContentStream(doc, page);
 			// contents.moveTo((page.getMediaBox().getWidth() - titleWidth) / 2,
 			// page.getMediaBox().getHeight() - marginTop - titleHeight);
+			//contents.lineTo(25,700);
 			contents.beginText();
 			contents.setNonStrokingColor(Color.BLUE);
 			contents.setFont(font, fontSize);

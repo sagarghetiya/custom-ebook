@@ -191,7 +191,7 @@ public class EbookController {
 		System.out.println(copy_type);
 		System.out.println(paymentMethod);
 		System.out.println("********************************************************");
-		service.savePaymentContent(name,email,buyer,price,addr,copy_type,paymentMethod);
+		service.savePaymentContent(name,email,buyer,price,addr,copy_type,paymentMethod,title);
 		service.mergePdf(buyer,false,title);
 		//String filename="/home/samridhi/mid.pdf";
 		//SendEmail s=new SendEmail(price,filename);

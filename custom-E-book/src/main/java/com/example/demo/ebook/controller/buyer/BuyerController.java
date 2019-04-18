@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.chapter.Chapter;
+import com.example.demo.ebook.model.payment.Payment;
 import com.example.demo.ebook.service.buyer.BuyerService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
@@ -64,9 +65,10 @@ public class BuyerController {
 	@RequestMapping("/myOrders")
 	public String myOrders(ModelMap map,HttpSession session) {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		List<File> files_list = service.buyerMyOrders(buyer);
-		if(files_list!=null) {
-			map.addAttribute("files_list", files_list);
+//		List<File> files_list = service.buyerMyOrders(buyer);
+		List<Payment> payments = service.buyerPayments(buyer);
+		if(payments!=null) {
+			map.addAttribute("payments", payments);
 			return "myOrders";
 		}
 		else {
