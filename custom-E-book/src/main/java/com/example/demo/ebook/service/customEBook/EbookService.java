@@ -17,4 +17,5 @@ public interface EbookService {
 	void generateHTMLFromPDF(String filename) throws IOException;
 	void mergePdf(Buyer buyer,boolean preview,String title);
 	 void savePaymentContent(String name,String email,Buyer buyer,String price,String addr,String copy_type,String paymentMethod,String title);
+	
 }

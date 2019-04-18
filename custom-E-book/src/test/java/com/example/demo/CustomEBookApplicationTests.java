@@ -134,13 +134,13 @@ public class CustomEBookApplicationTests {
 
 	@Test
 	public void testCsv() {
-		ChapterFileUpload cFileUpload = new ChapterFileUpload();
+		ChapterService chap_service = context.getBean(ChapterService.class);
 		BookService service = context.getBean(BookService.class);
 		String path = "/home/ankit/Documents/temp.csv";
 		Book book = service.getBookById(14);
 		System.out.println(book.getBookName());
 		try {
-			cFileUpload.parseCsv(path,book);
+			chap_service.parseCsv(path, book);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

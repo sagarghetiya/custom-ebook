@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.ebook.model.book.Book;
 public class ChapterFileUpload {
+	@Autowired
+	ChapterService service;
 	public void parseCsv(String csvFile,Book book) throws IOException{
 	ArrayList<String> names = new ArrayList<>(); 
 	ArrayList<String> keywords = new ArrayList<>();
@@ -53,9 +55,9 @@ public class ChapterFileUpload {
             System.out.println("Price : " + Price);
             System.out.println("---------------\n\n");
         }
-        ChapterServiceImpl service = new ChapterServiceImpl();
-        int x= service.saveChapters(names, keywords, Description, price, startPage, endPage, book);
-        System.out.println(x);
-    }
-}
+       }
+	//ChapterServiceImpl service = new ChapterServiceImpl();
+	int x= service.saveChapters(names, keywords, Description, price, startPage, endPage, book);
+    System.out.println(x);
+	}
 }
