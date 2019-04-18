@@ -165,9 +165,16 @@ public class ChapterController {
 		}
 		
 	}
+	@RequestMapping("testCsv")
+	public String testCsv()
+	{
+		return "csvUpload";
+	}
 	@RequestMapping("csvUpload")
-	public String csvUpload(@RequestParam("file") MultipartFile file) {
-		
+	public String csvUpload(@RequestParam("file") MultipartFile file,@RequestParam("id") int id) throws IOException {
+		String path = service.saveCsv(file);
+		Book book = bookService.getBookById(id);
+		service.parseCsv(path, book);
 		return "responseCsv";
 	}
 	
