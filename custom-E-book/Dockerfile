@@ -1,4 +1,4 @@
 FROM openjdk:8
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
+ADD target/customEbo0k-0.0.1-SNAPSHOT.war customEbo0k-0.0.1-SNAPSHOT.war
 EXPOSE 10001 10001
+ENTRYPOINT ["java", "-jar", "customEbo0k-0.0.1-SNAPSHOT.war"]
