@@ -15,8 +15,9 @@
 	<artifactId>customEbo0k</artifactId>
 	
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	
 	<name>custom-E-book</name>
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
