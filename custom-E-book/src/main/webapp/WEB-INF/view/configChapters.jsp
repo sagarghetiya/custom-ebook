@@ -97,26 +97,46 @@ body{
 // 			alert("id = "+id + " start page = "+startPage+" endPage = "+endPage);
 		});
 	});
-</script>
+	</script>
+	<script>
+	function scrollDown(i)
+	{ var index=i+1;
+	var n = index.toString();
+	 document.getElementById(n).scrollIntoView(true);
+	}
+	</script>
+	<script>
+	function scrollUp(i)
+	{ var index=i-1;
+	var n = index.toString();
+	 document.getElementById(n).scrollIntoView(true);
+	}
+	</script>
+
 </head>
 <body>
 <!---------------------NavBar opening -------------------------->
+<!-- Navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Configure Chapters</a>
+				<a class="navbar-brand" href="/pubHome"> CustomEbooks </a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="#">About</a></li>
+				<li class="active">
+				<li><a href="/pubHome">Home</a></li>
+				<li><a href="/about">About</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/logoutPublisher"><span class="glyphicon glyphicon-log-in"></span>
+			
+				<li><a href="/logoutPublisher"><span class="glyphicon glyphicon-log-out"></span>
 						Logout</a></li>
+						
 			</ul>
 		</div>
 	</nav>
-	<!---------------------NavBar ending -------------------------->
+	<!---------- end ----------------->
+	
 	
 	<form action="saveChapters" method="post">
 	<div class="container-fluid" style="width:55%" align="center">
@@ -128,7 +148,7 @@ body{
 			<input type="text" id="bookLoc" name="bookLoc" value="${book.bookLoc}" hidden="true"/>
 		<c:forEach var="i" begin="1" end="${book.noOfChapters}">
 		
-		<div class="jumbotron jumbotron-fluid">
+		<div class="jumbotron jumbotron-fluid" id="${i}">
 			<h3><b>Chapter ${i} </b></h3>
 			  <div class="row">
 					<div class="col-sm-4 card" style="background-color: lavender;">
@@ -185,14 +205,27 @@ body{
 							style="font-size: 12pt; height: 40px; width: 280px;" />
 					</div>
 				</div> 
-				<br> <button type="button" id="${i}">preview</button> <br>
+				<br> <button type="button" class="btn btn-info" id="${i}">preview</button> <br>
 				<div  class="loader" id="spin_${i}" hidden="true"></div>
 			<img src="" hidden="true" id="start_img_${i}" height="200" width="150">
 			<img src="" hidden="true" id="end_img_${i}" height="200" width="150">
 			<br>
-			<br>
-			
+					<c:set var="totalbooks" value="${book.noOfChapters}" />
+					<c:choose>
+						<c:when test="${i==totalbooks}">
+						<button type="button" class="btn btn-info" onclick="scrollUp(${i})">Previous</button>
+						</c:when>
+						<c:when test="${i==1}">
+						<button type="button" class="btn btn-info"  onclick="scrollDown(${i})">Next</button>
+						</c:when>
+						<c:otherwise>
+						<button type="button" class="btn-btn-info"onclick="scrollUp(${i})">Previous</button>
+						<button type="button" class="btn btn-info" onclick="scrollDown(${i})">Next</button>
+						</c:otherwise>
+					</c:choose>
+					
 			</div>
+			
 		</c:forEach>
 		
 		<input class="button button2" type="submit" value="configure chapters">

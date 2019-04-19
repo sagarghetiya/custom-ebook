@@ -37,7 +37,7 @@ public class PublisherController {
 		}
 		Publisher publisher = service.validatePublisher(loginId,password);
 		if(publisher==null) {
-			map.addAttribute("error", "username or password invalid");
+			map.addAttribute("error", "Invalid username or password");
 			return "Login";
 		}
 		else {
