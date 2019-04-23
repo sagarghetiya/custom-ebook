@@ -17,7 +17,7 @@ services:
     container_name: db
 
   war:
-    image: modular-ebok:modularebook
+    image: modularebook
     restart: always
     depends_on:
       - db
