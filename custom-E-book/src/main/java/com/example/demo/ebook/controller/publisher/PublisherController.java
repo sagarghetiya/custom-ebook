@@ -52,9 +52,11 @@ public class PublisherController {
 		String temp_loc = System.getProperty("user.dir")+ "/src/main/resources/static/images/temp";
 		File index = new File(temp_loc);
 		String[]entries = index.list();
-		for(String s: entries){
-		    File currentFile = new File(index.getPath(),s);
-		    currentFile.delete();
+			if(entries!=null) {
+			for(String s: entries){
+			    File currentFile = new File(index.getPath(),s);
+			    currentFile.delete();
+			}
 		}
 		session.invalidate();
 		return "redirect:/";
