@@ -182,5 +182,6 @@ $('.carousel .item').each(function(){
 </div>
 </div>
 </div>
+<p>hello</p>
 </body>
 </html>
