@@ -95,7 +95,7 @@ public class EbookController {
 	
 	
 	@RequestMapping(value = "/saveEbookContent")
-	public String SaveContent(ModelMap map,HttpSession session,@RequestParam("ebookid")List<Integer>ebookid,@RequestParam("sequence")List<Integer>sequence)
+	public String SaveContent(ModelMap map,HttpSession session, @RequestParam("sequence_string") String seqString)
 	{
 		if (session.getAttribute("id") == null) {
 			return "redirect:loginBuyerPublisher";
@@ -103,20 +103,20 @@ public class EbookController {
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
 		if (buyer == null)
 			return "redirect:loginBuyerPublisher";
-			//to check whether dropdown contains duplicate values
-			List<Integer>duplicate=new ArrayList<Integer>();
-			for(int i=0;i<sequence.size();i++)
-			{
-				duplicate.add(sequence.get(i));
-			}
-			Collections.sort(duplicate);
-			for (int i = 0; i < duplicate.size()-1; i++) {
-			   if(duplicate.get(i).equals(duplicate.get(i+1)))
-			   {map.addAttribute("error", "Selected particular sequence more than once");
-		      return "redirect:showEbookContent";
-		    }
-			}
-		int i=service.updateEbook(ebookid,sequence);
+		
+		if(seqString.equals("")) {
+			return "redirect:showEbookContent";
+		}
+		String [] seq = seqString.split(",");
+		ArrayList<Integer> idList = new ArrayList<Integer>();
+		ArrayList<Integer> sequence = new ArrayList<>();
+		int k=1;
+		for(String s:seq) {
+			idList.add(Integer.parseInt(s));
+			sequence.add(k);
+			k++;
+		}
+		int i=service.updateEbook(idList,sequence);
 		if(i==1)
 			map.addAttribute("result", "successfully added");
 		else

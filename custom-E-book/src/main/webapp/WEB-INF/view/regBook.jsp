@@ -82,7 +82,7 @@ body{
   </div>
    <div class="row">
     <div class="col-sm-4 card" style="background-color:lavender;"><b>PRICE</b> </div>
-    <div class="col-sm-6 card" style="background-color:lavenderblush;">  <input type="number" name="price" style="font-size: 18pt; height: 40px; width:280px; "/></div>
+    <div class="col-sm-6 card" style="background-color:lavenderblush;">  <input type="number" step="any" name="price" style="font-size: 18pt; height: 40px; width:280px; "/></div>
   </div>
    <div class="row">
     <div class="col-sm-4 card" style="background-color:lavender;"><b>KEYWORDS</b></div>

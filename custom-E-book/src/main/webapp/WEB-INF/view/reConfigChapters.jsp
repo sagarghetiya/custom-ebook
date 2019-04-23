@@ -22,7 +22,7 @@
 			<br>
 			<br>
 			<br><label for="name_${chapter.id}"> Name of the chapter</label><input type="text" name="name_${chapter.id}" value="${chapter.name}">
-			<br><label for="price_${chapter.id}"> Price</label><input type="number" name="price_${chapter.id}" min="0" value="${chapter.price}">
+			<br><label for="price_${chapter.id}"> Price</label><input type="number" step="any" name="price_${chapter.id}" min="0" value="${chapter.price}">
 			<br><label for="description_${chapter.id}"> Description of the chapter</label> <br><textarea rows="4" cols="50" name="description_${chapter.id}" >${chapter.description}</textarea>
 			<br><label for="keywords_${chapter.id}"> Keywords (space separated)</label> <input type="text" name="keywords_${chapter.id}" value="${chapter.keywords}">
 			<br>

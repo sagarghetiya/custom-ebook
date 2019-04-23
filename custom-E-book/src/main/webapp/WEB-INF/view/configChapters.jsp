@@ -144,7 +144,7 @@ body{
 						<b>PRICE</b>
 					</div>
 					<div class="col-sm-6 card" style="background-color: lavenderblush;">
-						<input type="number"  name="price_${i}" min="0"
+						<input type="number" step="any" name="price_${i}" min="0"
 							style="font-size: 12pt; height: 40px; width: 280px;" />
 					</div>
 				</div>
