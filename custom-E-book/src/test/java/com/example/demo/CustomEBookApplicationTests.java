@@ -44,7 +44,7 @@ public class CustomEBookApplicationTests {
 		buyer.setLoginId("set");
 		buyer.setName("john");
 		buyer.setPassword("pass");
-		service.registerBuyer(buyer);
+		//service.registerBuyer(buyer);
 		System.out.println("TEST : buyer saving into db");
 		//repository.save(buyer);
 	}
@@ -58,7 +58,7 @@ public class CustomEBookApplicationTests {
 		publisher.setName("john");
 		publisher.setPassword("pass");
 //		service.registerBuyer(buyer);
-		repository.save(publisher);
+		//repository.save(publisher);
 		System.out.println("TEST : publisher saving into db");
 	}
 	
