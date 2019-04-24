@@ -55,7 +55,8 @@ public class BookController {
 			String temp_loc = System.getProperty("user.dir")+ "/src/main/resources/static/images/temp";
 			File index = new File(temp_loc);
 			String[]entries = index.list();
-			if(entries!=null) {
+
+			if(entries !=null) {
 				for(String s: entries){
 				    File currentFile = new File(index.getPath(),s);
 				    currentFile.delete();

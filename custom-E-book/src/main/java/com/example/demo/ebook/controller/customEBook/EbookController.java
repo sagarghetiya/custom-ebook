@@ -122,8 +122,6 @@ public class EbookController {
 		else
 			map.addAttribute("result", "failed");
 		return "redirect:showEbookContent";
-		
-		
 	}
 	@RequestMapping(value ="/payment")
 	public String Payment(HttpSession session,ModelMap map)
@@ -152,7 +150,7 @@ public class EbookController {
 			}
 		}
 		double hardCopyPrice = total+totalPages*0.5 +30;
-		service.mergePdf(buyer, true);    //for creating ebook preview
+		service.mergePdf(buyer, true,"");    //for creating ebook preview
 		map.addAttribute("price", total);
 		map.addAttribute("hardCopyPrice", hardCopyPrice);
 		return "Payment";
@@ -177,7 +175,7 @@ public class EbookController {
 	}
 	
 	@RequestMapping("/successPayment")
-	public String successPayment(ModelMap map,HttpSession session,@RequestParam("name") String name,@RequestParam("email")String email,@RequestParam("price")String price,@RequestParam("addr")String addr,@RequestParam(value="copy_type",required=false)String copy_type,@RequestParam("paymentMethod")String paymentMethod)
+	public String successPayment(ModelMap map,HttpSession session,@RequestParam("name") String name,@RequestParam("email")String email,@RequestParam("price")String price,@RequestParam("addr")String addr,@RequestParam(value="copy_type",required=false)String copy_type,@RequestParam("paymentMethod")String paymentMethod,@RequestParam("title") String title)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
 		if(buyer==null)
@@ -191,8 +189,8 @@ public class EbookController {
 		System.out.println(copy_type);
 		System.out.println(paymentMethod);
 		System.out.println("********************************************************");
-		service.savePaymentContent(name,email,buyer,price,addr,copy_type,paymentMethod);
-		service.mergePdf(buyer,false);
+		service.savePaymentContent(name,email,buyer,price,addr,copy_type,paymentMethod,title);
+		service.mergePdf(buyer,false,title);
 		//String filename="/home/samridhi/mid.pdf";
 		//SendEmail s=new SendEmail(price,filename);
 		service.deleteContentAfterSave(buyer);
@@ -221,7 +219,7 @@ public class EbookController {
 	public String combinePdf(HttpSession session)
 	{
 		Buyer buyer = (Buyer) session.getAttribute("buyer");
-		service.mergePdf(buyer,true);
+		service.mergePdf(buyer,true,"");
 		return "redirect:buyHome";
 	}
 }

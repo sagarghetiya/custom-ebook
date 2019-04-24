@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,16 +11,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.ebook.model.book.Book;
 import com.example.demo.ebook.model.buyer.Buyer;
 import com.example.demo.ebook.model.customEBook.CustomEBook;
 import com.example.demo.ebook.model.publisher.Publisher;
+import com.example.demo.ebook.repository.book.BookRepository;
 import com.example.demo.ebook.repository.buyer.BuyerRepository;
+import com.example.demo.ebook.repository.chapter.ChapterRepository;
 import com.example.demo.ebook.repository.customEBook.EbookRepository;
 import com.example.demo.ebook.repository.publisher.PublisherRepository;
+import com.example.demo.ebook.service.book.BookService;
 import com.example.demo.ebook.service.buyer.BuyerService;
 
 import com.example.demo.ebook.service.customEBook.EbookService;
-
+import com.example.demo.ebook.service.chapter.ChapterFileUpload;
 import com.example.demo.ebook.service.chapter.ChapterService;
 
 import com.example.demo.ebook.service.publisher.PublisherService;
@@ -119,7 +124,7 @@ public class CustomEBookApplicationTests {
 		service.cutPdf(startPage, endPage, source, dest, true, true);
 	}
 	
-	@Test
+	//@Test
 	public void previewChapter() {
 		ChapterService service = context.getBean(ChapterService.class);
 		String loc = "/home/shreyansh/ebooks/publisher_5/book_25/chap_3.pdf";
@@ -127,5 +132,20 @@ public class CustomEBookApplicationTests {
 		System.out.println(previewChapter);
 	}
 
-
+	@Test
+	public void testCsv() {
+		ChapterService chap_service = context.getBean(ChapterService.class);
+		BookService service = context.getBean(BookService.class);
+		String path = "/home/ankit/Documents/temp.csv";
+		Book book = service.getBookById(14);
+		System.out.println(book.getBookName());
+		try {
+			chap_service.parseCsv(path, book);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
