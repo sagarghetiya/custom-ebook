@@ -38,7 +38,7 @@ public class BuyerController {
 		int result = service.registerBuyer(buyer);
 		map.addAttribute("result", "user created with id "+result);
 		System.out.println(" INFO : logging in buyer");
-		return "/";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/validateBuyerLogin", method = RequestMethod.POST)

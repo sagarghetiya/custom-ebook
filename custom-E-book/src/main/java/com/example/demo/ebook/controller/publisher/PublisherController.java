@@ -28,7 +28,7 @@ public class PublisherController {
 		int result = service.registerPublisher(publisher);
 		map.addAttribute("result", "user created with id " + result);
 		System.out.println(" INFO : Registering publisher");
-		return "successRegistration";
+		return "index";
 	}
 
 	@RequestMapping(value = "/validatePublisherLogin", method = RequestMethod.POST)
