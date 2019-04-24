@@ -85,10 +85,13 @@ form.example::after {
 				<li><a href="/about">About</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>
+						My Orders</a></li>
 			<li><a href="/showEbookContent"><span class="glyphicon glyphicon-shopping-cart"></span>
 						Cart</a></li>
 				<li><a href="/logoutBuyer"><span class="glyphicon glyphicon-log-out"></span>
 						Logout</a></li>
+						
 						
 			</ul>
 		</div>

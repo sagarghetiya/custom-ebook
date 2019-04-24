@@ -54,6 +54,10 @@ public class BookController {
 		} else {
 			String temp_loc = System.getProperty("user.dir")+ "/src/main/resources/static/images/temp";
 			File index = new File(temp_loc);
+			if(!index.isDirectory())
+			{
+				index.mkdirs();
+			}
 			String[]entries = index.list();
 			if(entries !=null) {
 				for(String s: entries){
