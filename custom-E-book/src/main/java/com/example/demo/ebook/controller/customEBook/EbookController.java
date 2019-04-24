@@ -69,6 +69,7 @@ public class EbookController {
 		if (chapters != null)
 			map.addAttribute("chapters", chapters);
 		map.addAttribute("keywords", keywords);
+		System.out.println(" INFO : searching for chapters/books");
 		return "searchResult";
 	}
 
@@ -79,6 +80,7 @@ public class EbookController {
 		if(buyer==null)
 			return "redirect:loginBuyerPublisher";
 		int save = service.saveEBook(bookIdList, chapterIdList, buyer);
+		System.out.println(" INFO : adding to cart");
 		return "redirect:showEbookContent";
 	}
 	@RequestMapping(value = "/deletechapter/{id}")

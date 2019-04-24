@@ -37,7 +37,8 @@ public class BuyerController {
 	public String registerBuyer(@ModelAttribute("buyer") Buyer buyer, ModelMap map) {
 		int result = service.registerBuyer(buyer);
 		map.addAttribute("result", "user created with id "+result);
-		return "successRegistration";
+		System.out.println(" INFO : logging in buyer");
+		return "/";
 	}
 	
 	@RequestMapping(value = "/validateBuyerLogin", method = RequestMethod.POST)
@@ -101,6 +102,4 @@ public class BuyerController {
 	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes, headers, HttpStatus.OK);
 	    return response;
 	}
-	
-	
 }

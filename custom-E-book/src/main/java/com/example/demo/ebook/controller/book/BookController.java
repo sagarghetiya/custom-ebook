@@ -44,6 +44,7 @@ public class BookController {
 		map.addAttribute("result", "book created with id "+result.getId());
 		service.saveBook(file, result, publisher.getId());
 		map.addAttribute("book",result);
+		System.out.println(" INFO : Registering book");
 		return "successBookRegistration";
 	}
 	

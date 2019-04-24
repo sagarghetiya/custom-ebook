@@ -27,6 +27,7 @@ public class PublisherController {
 	public String registerPublisher(@ModelAttribute("buyer") Publisher publisher, ModelMap map) {
 		int result = service.registerPublisher(publisher);
 		map.addAttribute("result", "user created with id " + result);
+		System.out.println(" INFO : Registering publisher");
 		return "successRegistration";
 	}
 
@@ -44,6 +45,7 @@ public class PublisherController {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", publisher.getId());
 			session.setAttribute("publisher", publisher);
+			System.out.println(" INFO : logging in publisher");
 			return "redirect:pubHome";
 		}
 	}
@@ -61,6 +63,7 @@ public class PublisherController {
 			}
 		}
 		session.invalidate();
+		System.out.println(" INFO : logging out");
 		return "redirect:/";
 	}
 
