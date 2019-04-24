@@ -47,7 +47,7 @@ public class BuyerController {
 		}
 		Buyer buyer = service.validateBuyer(loginId,password);
 		if(buyer==null) {
-			map.addAttribute("error", "username or password invalid");
+			map.addAttribute("error", "Invalid username or password");
 			return "Login";
 		}
 		else {

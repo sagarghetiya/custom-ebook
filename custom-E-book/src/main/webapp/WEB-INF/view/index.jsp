@@ -154,6 +154,7 @@ $('.carousel .item').each(function(){
 <!-- footer area -->
 <!-- <a href="/regBuyer">register Buyer</a> <br/> -->
 <!-- <a href="/regPublisher">register Publisher</a> <br/> -->
+ <h2 style="color:white;"><b>Custom E Books</b></h2> 
 <div class="container">
 <div class="col-md-10 col-md-offset-1">
 <div class="carousel slide" id="myCarousel">
@@ -182,5 +183,9 @@ $('.carousel .item').each(function(){
 </div>
 </div>
 </div>
+
+
+
+
 </body>
 </html>

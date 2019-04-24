@@ -36,9 +36,9 @@ public class PublisherController {
 		if (request.getSession(false).getAttribute("id") != null) {
 			return "redirect:pubHome";
 		}
-		Publisher publisher = service.validatePublisher(loginId, password);
-		if (publisher == null) {
-			map.addAttribute("error", "username or password invalid");
+		Publisher publisher = service.validatePublisher(loginId,password);
+		if(publisher==null) {
+			map.addAttribute("error", "Invalid username or password");
 			return "Login";
 		} else {
 			HttpSession session = request.getSession(true);

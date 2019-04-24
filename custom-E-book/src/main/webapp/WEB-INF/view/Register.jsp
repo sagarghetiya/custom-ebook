@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
  .modal-header, h4, .close {
-    background-color: #5cb85c;
+    background-color: #6495ED;
     color:white !important;
     text-align: center;
     font-size: 30px;
@@ -182,18 +182,15 @@ body {
              <input type="password" class="form-control" name="password" placeholder="Enter Password" />
             </div>
              
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-            
+           
           <!--   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a></p>--->
             
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register!!</button>
+              <button type="submit" class="btn btn-success btn-block" style="background-color:#6495ED;"><span class="glyphicon glyphicon-off"></span> Register!!</button>
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Already a member? <a href="#">Login</a></p>
+          <p>Already a member? <a href="/loginBuyerPublisher">Login</a></p>
         </div>
       </div>   
     </div>
@@ -215,36 +212,34 @@ body {
           
             <div class="form-group">
              <label for="name"><span class="glyphicon glyphicon-user"></span>Publisher name</label>
-             <input type="text" class="form-control" name="name" placeholder="Enter Your Name" />
+             <input type="text" class="form-control" name="name" placeholder="Enter Your Name"  required/>
              </div>
              
               <div class="form-group">
              <label for="loginId"><span class="glyphicon glyphicon-user"></span>Login ID</label>
-             <input type="text" class="form-control" name="loginId" placeholder="Enter LoginId"/>
+             <input type="text" class="form-control" name="loginId" placeholder="Enter LoginId" required/>
              </div>
             
              <div class="form-group">
              <label for="email"><span class="glyphicon glyphicon-user"></span>Email</label>
-             <input type="text" class="form-control" name="email" placeholder="Enter Email" />
+             <input type="email" class="form-control" name="email" placeholder="Enter Email" required />
              </div>
              
               <div class="form-group">
               <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-             <input type="password" class="form-control" name="password" placeholder="Enter Password"/>
+             <input type="password" class="form-control" name="password" placeholder="Enter Password" required/>
             </div>
              
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
+            
             
           <!--   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a></p>--->
             
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Register!!</button>
+              <button type="submit" class="btn btn-success btn-block" style="background-color:#6495ED;"><span class="glyphicon glyphicon-off"></span> Register!!</button>
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Already a member? <a href="#">Login</a></p>
+          <p>Already a member? <a href="/loginBuyerPublisher">Login</a></p>
         </div>
       </div>   
     </div>
