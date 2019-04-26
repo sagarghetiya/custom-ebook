@@ -37,7 +37,7 @@ public class BuyerController {
 	public String registerBuyer(@ModelAttribute("buyer") Buyer buyer, ModelMap map) {
 		int result = service.registerBuyer(buyer);
 		map.addAttribute("result", "user created with id "+result);
-		System.out.println(" INFO : logging in buyer");
+		System.out.println(" INFO : Registering in buyer");
 		return "index";
 	}
 	
@@ -61,6 +61,7 @@ public class BuyerController {
 	@RequestMapping("/logoutBuyer")
 	public String logoutPublisher(HttpSession session) {
 		session.invalidate();
+		System.out.println(" INFO : logging out buyer");
 		return "redirect:/";
 	}
 	@RequestMapping("/myOrders")
