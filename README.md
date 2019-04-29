@@ -1,2 +1,2 @@
-# custom-ebook
+# Modular-ebook
 DevOps Project
